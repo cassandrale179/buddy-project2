@@ -6,6 +6,7 @@
     <title></title>
 
     <link rel="manifest" href="manifest.json">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- un-comment this code to enable service worker
     <script>
@@ -16,38 +17,46 @@
       }
     </script>-->
 
+
+    <!-- __________________ STYLESHEET ______________________ -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
 
+
+    <!-- ________________________ INITIALIZE FIREBASE ___________________________ -->
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCvIhSFsWLBfgPfy5pVwf6Jsj1u4MpUP90",
-    authDomain: "buddy-project-d9fe9.firebaseapp.com",
-    databaseURL: "https://buddy-project-d9fe9.firebaseio.com",
-    projectId: "buddy-project-d9fe9",
-    storageBucket: "buddy-project-d9fe9.appspot.com",
-    messagingSenderId: "635898603614"
-  };
-  firebase.initializeApp(config);
-</script>
+    <script>
+      var config = {
+        apiKey: "AIzaSyCvIhSFsWLBfgPfy5pVwf6Jsj1u4MpUP90",
+        authDomain: "buddy-project-d9fe9.firebaseapp.com",
+        databaseURL: "https://buddy-project-d9fe9.firebaseio.com",
+        projectId: "buddy-project-d9fe9",
+        storageBucket: "buddy-project-d9fe9.appspot.com",
+        messagingSenderId: "635898603614"
+      };
+      firebase.initializeApp(config);
+    </script>
 
-    <!-- cordova script (this will be a 404 during development) -->
+    <!-- ________________________ IMPORTANT JS FILE ________________________ -->
     <script src="cordova.js"></script>
-
-    <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+
+    <!-- ________________________ CONTROLLER LIST __________________________ -->
+    <script src="js/controllers/profile.js"></script>
+    <script src="js/controllers/buddies.js"></script>
+    <script src="js/controllers/chat.js"></script>
+    <script src="js/controllers/settings.js"></script>
   </head>
+
+
+
+  <!-- ________________________ BODY OF THE APP ___________________________ -->
   <body ng-app="starter">
     <!--
       The nav bar that will be updated as we navigate between views.
