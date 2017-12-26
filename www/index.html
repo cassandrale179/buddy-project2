@@ -26,6 +26,20 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCvIhSFsWLBfgPfy5pVwf6Jsj1u4MpUP90",
+    authDomain: "buddy-project-d9fe9.firebaseapp.com",
+    databaseURL: "https://buddy-project-d9fe9.firebaseio.com",
+    projectId: "buddy-project-d9fe9",
+    storageBucket: "buddy-project-d9fe9.appspot.com",
+    messagingSenderId: "635898603614"
+  };
+  firebase.initializeApp(config);
+</script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
