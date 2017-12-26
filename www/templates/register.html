@@ -1,0 +1,13 @@
+<ion-view hide-nav-bar="true">
+  <ion-content class="padding background center1">
+    <img class="logo" src="../img/logo.png" />
+    <h1> BUDDY PROJECT </h1>
+    <form>
+      <div>
+          <input ng-model="user.email" type="text" placeholder="Email" >
+          <input ng-model="user.password" type="password" placeholder="Password">
+      </div>
+    </form>
+    <button class="button button-block" ng-click="RegisterUser(user)"> REGISTER </button>
+  </ion-content>
+</ion-view>
