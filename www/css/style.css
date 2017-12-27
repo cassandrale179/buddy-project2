@@ -3,10 +3,14 @@ h1, h3, h4, h5, h6, p{
 }
 
 h1{
-  color: white;
+  color: black;
 }
 
-p, h6, li{
+h5{
+color: #515A5A;
+}
+
+p, h6{
   color: #A6ACAF;
 }
 
@@ -15,14 +19,12 @@ input{
   display: block;
   margin: auto;
   width: 100%;
-  color: white !important;
-  border-bottom: 0.1px white solid !important;
+  color: black !important;
+  border-bottom: 0.1px #A6ACAF solid !important;
   margin-bottom: 5px;
 }
 
-input::placeholder, textarea::placeholder{
-  color: white;
-}
+
 
 /*----- BACKGROUND OF LOGIN AND REGISTER SCREEN ------ */
 .background{
@@ -59,16 +61,31 @@ input::placeholder, textarea::placeholder{
 }
 
 
+
+.ion-edit{
+  font-size: 15px;
+}
+
+.float-right{
+  display: block;
+  float: right;
+}
+
+
 /*---------------------- PROFILE PAGE STYLING ----------------------- */
 #A1 img{
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  border-radius: 200px;
+  border-radius: 300px;
   display: block;
   margin: auto;
 }
 
 #A2{
   margin-top: 15px;
+}
+
+#A2 button{
+  color: white;
 }

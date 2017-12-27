@@ -3,17 +3,16 @@ app.controller('RegisterCtrl',  ['$scope', '$state',
   $scope.errormessage = "";
   $scope.RegisterUser = function(user){
     $scope.user = user;
-    console.log(user.email);
-    console.log(user.password);
-    console.log(user.name);
     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
         .then(function(resolve){
           var info = {
           name: $scope.user.name,
           email: $scope.user.email,
-          description: "Tap here to edit your bio",
+          description: "This is a part where you can write a few short descriptive sentences about your bio",
           interest: "",
-          buddy: "",
+          buddies: "",
+          birthyear: $scope.user.birthyear,
+          location: "Philadelphia, PA",
           pictureUrl: "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/default.png?alt=media&token=540dfe34-5559-4d2f-8e42-27258502ea01"
         };
         var userRef = firebase.database().ref("users/");
