@@ -1,3 +1,5 @@
+
+/*----- STANDARD CSS CUSTOMIZATION ------ */
 h1, h3, h4, h5, h6, p{
   text-align: center;
 }
@@ -25,33 +27,7 @@ input{
 }
 
 
-
-/*----- BACKGROUND OF LOGIN AND REGISTER SCREEN ------ */
-.navbar-decor{
-  background: black;
-  color: white;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-
-.tabs2{
-  background: black !important;
-  border: none !important;
-}
-
-/*----- PADDING INSIDE DIV ------ */
-.padding{
-  padding: 10% !important;
-}
-
-/*----- LOGO OF THE BUDDY PROJECT ----- */
-.logo{
-  display: block;
- margin: auto;
- width: 50%;
- object-fit: cover;
-}
-
+/*----- LIST OF CLASSES IN ALPHABETICAL ORDER ------ */
 .center1{
   display: flex !important;
   flex-wrap: nowrap !important;
@@ -69,15 +45,19 @@ input{
   border: 0.1px #E5E7E9 solid;
 }
 
-
-.ion-edit{
-  font-size: 15px;
+/*----- PADDING INSIDE DIV ------ */
+.padding{
+  padding: 10% !important;
 }
 
-.float-right{
+/*----- LOGO OF THE BUDDY PROJECT ----- */
+.logo{
   display: block;
-  float: right;
+ margin: auto;
+ width: 50%;
+ object-fit: cover;
 }
+
 
 /* --------- MATERIAL UI FLOATING BUTTON ------------ */
 .float-button {
@@ -110,11 +90,32 @@ input{
   color: white;
 }
 
+.float-right{
+  display: block;
+  float: right;
+}
+
+.ion-edit{
+  font-size: 15px;
+}
+
+.navbar-decor{
+  background: black;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+.tabs2{
+  background: black !important;
+  border: none !important;
+}
 
 /*---------------------- PROFILE PAGE STYLING ----------------------- */
 #A{
   padding-top: 15%;
 }
+
 #A1 img{
   width: 100px;
   height: 100px;
@@ -130,4 +131,15 @@ input{
 
 #A2 button{
   color: white;
+}
+
+
+
+/*---------------------- INTEREST PAGE STYLING ----------------------- */
+#B{
+  padding-top: 13%;
+}
+
+#B2{
+  padding: 50px; 
 }
