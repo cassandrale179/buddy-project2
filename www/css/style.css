@@ -34,6 +34,11 @@ input{
 }
 
 
+.tabs2{
+  background: black !important;
+  border: none !important;
+}
+
 /*----- PADDING INSIDE DIV ------ */
 .padding{
   padding: 10% !important;
@@ -54,6 +59,7 @@ input{
   align-items: center !important;
 }
 
+
 .col{
   margin-left: 5px;
   margin-right: 5px;
@@ -62,7 +68,6 @@ input{
 .col-border{
   border: 0.1px #E5E7E9 solid;
 }
-
 
 
 .ion-edit{
@@ -74,11 +79,45 @@ input{
   float: right;
 }
 
+/* --------- MATERIAL UI FLOATING BUTTON ------------ */
+.float-button {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 30px;
+  padding: 25px;
+  font-size: 40px;
+  background: black;
+  position: fixed;
+  bottom: 20px; /* Adjust to where you want it */
+  right: 20px; /* Adjust to where you want it */
+  z-index: 9999;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.float-button .height_fix {
+  margin-top: 100%;
+}
+
+.float-button .content {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: -20px; /* Note, this must be half the font size */
+  color: white;
+}
+
 
 /*---------------------- PROFILE PAGE STYLING ----------------------- */
+#A{
+  padding-top: 15%;
+}
 #A1 img{
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 300px;
   display: block;
