@@ -27,9 +27,12 @@ input{
 
 
 /*----- BACKGROUND OF LOGIN AND REGISTER SCREEN ------ */
-.background{
-  background: url('../img/BGlogin.png');
+.navbar-decor{
+  background: black;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
+
 
 /*----- PADDING INSIDE DIV ------ */
 .padding{
@@ -45,10 +48,10 @@ input{
 }
 
 .center1{
-  display: flex;
-  flex-wrap: nowrap;
-  align-content: stretch;
-  align-items: center;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-content: stretch !important;
+  align-items: center !important;
 }
 
 .col{
