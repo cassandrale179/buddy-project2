@@ -2,12 +2,12 @@
   <ion-content class="padding background center1">
     <img class="logo" src="../img/logo.png" />
     <h1> BUDDY PROJECT </h1>
-    <form>
+      <div ng-if="errorMessage!=''">{{errorMessage}}</div>
       <div>
+          <input ng-model="user.name" type="text" placeholder="Name" >
           <input ng-model="user.email" type="text" placeholder="Email" >
           <input ng-model="user.password" type="password" placeholder="Password">
       </div>
-    </form>
     <button class="button button-block" ng-click="RegisterUser(user)"> REGISTER </button>
   </ion-content>
 </ion-view>
