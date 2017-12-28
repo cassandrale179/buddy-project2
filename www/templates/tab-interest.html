@@ -13,7 +13,7 @@
   </div>
 
     <!-- ______________________ ADDING BUTTON _______________________________ -->
-  <div ng-click="AddInterest()" class="float-button">
+  <div ng-hide="search" ng-click="AddInterest()" class="float-button">
     <span class="height-fix">
       <a class="content">
         <i class="ion-plus-round"> </i>
@@ -47,19 +47,15 @@
       <!-- ______________ ADDING AN INTEREST _____________________ -->
       <div id="B2" ng-show="search">
         <h4>
-          Type in an interest below to add it.
+          Search for an interest to add below or add your own.
         </h4>
         <input type="text" placeholder="Search An Interest..." ng-model="searchInterest"/>
-        <div ng-repeat="interest in DisplayData | filter: searchInterest">
+        <div  ng-repeat="interest in DisplayData | filter: searchInterest" ng-click="AutoFill(interest)">
           {{interest.name}}
+          <span>{{interest.likes}} like this</span>
         </div>
-        <button class="button button-block">Add Interest </button>
-        <!-- <div id="B2-1" ng-repeat="interest in interestData | filter: searchInterest">
-          {{interest}}
-        </div> -->
+        <button class="button button-block">ADD INTEREST </button>
       </div>
-
-
     </div>
   </ion-content>
 </ion-view>

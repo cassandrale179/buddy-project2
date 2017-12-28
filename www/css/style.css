@@ -27,6 +27,7 @@ input{
 }
 
 
+
 /*----- LIST OF CLASSES IN ALPHABETICAL ORDER ------ */
 .center1{
   display: flex !important;
@@ -141,5 +142,11 @@ input{
 }
 
 #B2{
-  padding: 50px; 
+  padding: 50px;
+}
+
+#B2 span{
+  display: block;
+  float: right;
+  color: #A6ACAF;
 }

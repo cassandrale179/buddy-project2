@@ -20,5 +20,11 @@ app.controller('InterestCtrl', function($scope, Chats) {
     }
     console.log($scope.DisplayData);
     $scope.$apply();
+
+    //------- FUNCTION TO ADD THE INTEREST  --------
+    $scope.CaptureInterest = function(interest){
+      console.log("Interest to be pushed");
+      console.log(interest);
+    };
   });
 });
