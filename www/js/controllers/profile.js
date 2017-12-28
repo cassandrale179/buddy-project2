@@ -5,7 +5,7 @@ function($scope) {
   $scope.$on('$ionicView.enter', function() {
     //if (user !== null){
     //  var userRef = firebase.database().ref("users/" + user.uid);
-    var userRef = firebase.database().ref("prod/users/" + "aUxZ8uPNgbc4USL4gTr1CXBiHHN2");
+    var userRef = firebase.database().ref("prod/users/" + user.uid);
       userRef.on("value", function(snapshot){
         $scope.name = snapshot.val().name;
         $scope.description = snapshot.val().description;

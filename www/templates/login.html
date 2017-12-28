@@ -1,0 +1,12 @@
+<ion-view hide-nav-bar="true">
+  <ion-content class="padding center1">
+    <img class="logo" src="../img/logo.png" />
+    <h1> BUDDY PROJECT </h1>
+      <div ng-if="errorMessage!=''">{{errorMessage}}</div>
+      <div>
+          <input ng-model="user.email" type="text" placeholder="Email" >
+          <input ng-model="user.password" type="password" placeholder="Password">
+      </div>
+    <button class="button button-dark button-block" ng-click="LoginUser(user)"> Login </button>
+  </ion-content>
+</ion-view>
