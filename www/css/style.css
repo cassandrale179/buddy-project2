@@ -141,11 +141,16 @@ input{
   padding-top: 13%;
 }
 
-#B2{
+#B1 h4{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#C{
   padding: 50px;
 }
 
-#B2 span{
+#C span{
   display: block;
   float: right;
   color: #A6ACAF;

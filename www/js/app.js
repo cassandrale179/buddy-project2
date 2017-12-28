@@ -29,6 +29,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/tab-interest.html',
     controller: 'InterestCtrl'
   })
+  .state('match', {
+    url: '/match',
+    templateUrl: 'templates/tab-match.html',
+    controller: 'MatchCtrl'
+  })
 
 
   // setup an abstract state for the tabs directive

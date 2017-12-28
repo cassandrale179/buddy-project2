@@ -13,49 +13,38 @@
   </div>
 
     <!-- ______________________ ADDING BUTTON _______________________________ -->
-  <div ng-hide="search" ng-click="AddInterest()" class="float-button">
+  <!-- <div ng-click="AddInterest()" class="float-button">
     <span class="height-fix">
       <a class="content">
         <i class="ion-plus-round"> </i>
       </a>
     </span>
-  </div>
+  </div> -->
 
 
   <!-- _______________________ CONTENT OF INTEREST PAGE _______________________ -->
   <ion-content>
     <div id="B">
+      <div id="C">
+        <input type="text" placeholder="Search An Interest..." ng-model="SearchInterest"/>
+        <div  ng-repeat="interest in DisplayData | filter: searchInterest" ng-click="CaptureInterest(interest)">
+          {{interest.name}}
+          <span>{{interest.likes}} like this</span>
+        </div>
+        <button class="button button-block" ng-click="CaptureInterest(SearchInterest)">ADD MY OWN INTEREST </button>
+      </div>
 
       <!-- ______________ DISPLAY LIST OF INTERESTS OF USERS _____________________ -->
-      <div id="B1" ng-hide="search">
+      <div id="B1">
+        <h4 ng-show="NoInterest"> To add an interest, you can search and tap on an option above. </h4>
         <ion-list>
-        <ion-item> gameofthrones  <ion-option-button class="button-assertive" ng-click="remove(chat)">
-            Delete
-          </ion-option-button> </ion-item>
-        <ion-item> harrypotter <ion-option-button class="button-assertive" ng-click="remove(chat)">
-            Delete
-          </ion-option-button></ion-item>
-        <ion-item> rockandroll <ion-option-button class="button-assertive" ng-click="remove(chat)">
-            Delete
-          </ion-option-button></ion-item>
-        <ion-item> strangerthings<ion-option-button class="button-assertive" ng-click="remove(chat)">
-            Delete
-          </ion-option-button> </ion-item>
+          <ion-item ng-repeat="interestStr in UserInterest track by $index">{{interestStr}}
+            <ion-option-button class="button-assertive" ng-click="remove($index)">Delete</ion-option-button>
+          </ion-item>
         </ion-list>
       </div>
 
       <!-- ______________ ADDING AN INTEREST _____________________ -->
-      <div id="B2" ng-show="search">
-        <h4>
-          Search for an interest to add below or add your own.
-        </h4>
-        <input type="text" placeholder="Search An Interest..." ng-model="searchInterest"/>
-        <div  ng-repeat="interest in DisplayData | filter: searchInterest" ng-click="AutoFill(interest)">
-          {{interest.name}}
-          <span>{{interest.likes}} like this</span>
-        </div>
-        <button class="button button-block">ADD INTEREST </button>
-      </div>
     </div>
   </ion-content>
 </ion-view>
