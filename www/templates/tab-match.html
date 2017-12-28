@@ -1,23 +1,25 @@
-<!-- <ion-view view-title="Find A Match">
+<ion-view view-title="Find A Match">
+
+    <!-- ______________________ ADDING BUTTON _______________________________ -->
+    <div ng-click="AddInterest()" class="float-button">
+      <span class="height-fix">
+        <a class="content">
+          <i class="ion-plus-round"> </i>
+        </a>
+      </span>
+    </div>
+
+
   <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
     <div class="tabs tabs2">
       <a class="tab-item" href="#/tab/buddies">
         Your Buddies
       </a>
       <a class="tab-item active" href="#/match">
-        Find Buddies
+        Your Matches
       </a>
     </div>
   </div>
   <ion-content>
-    <div id="C">
-      <h4>  Search for an interest to add below or add your own. </h4>
-      <input type="text" placeholder="Search An Interest..." ng-model="searchInterest"/>
-      <div  ng-repeat="interest in DisplayData | filter: searchInterest" ng-click="AutoFill(interest)">
-        {{interest.name}}
-        <span>{{interest.likes}} like this</span>
-      </div>
-      <button class="button button-block" ng-click="CaptureInterest()">ADD INTEREST </button>
-    </div>
   </ion-content>
-</ion-view> -->
+</ion-view>

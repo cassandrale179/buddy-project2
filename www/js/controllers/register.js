@@ -15,7 +15,7 @@ app.controller('RegisterCtrl',  ['$scope', '$state',
           location: "Philadelphia, PA",
           pictureUrl: "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/default.png?alt=media&token=540dfe34-5559-4d2f-8e42-27258502ea01"
         };
-        var userRef = firebase.database().ref("users/");
+        var userRef = firebase.database().ref("prod/users/");
         var user = firebase.auth().currentUser;
         userRef.child(user.uid).set(info);
         $state.go('tab.profile');

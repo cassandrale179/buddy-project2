@@ -1,16 +1,13 @@
 app.controller('InterestCtrl', function($scope, $state) {
 
-  //IF USER CLICK ADD INTEREST, REDIRECT TO MATCH PAGE
-  $scope.AddInterest = function(){
-    $state.go('match');
-  };
-
+  //----------------------- GLOBAL VARIABLES TO BE USED ---------------------- 
+  $scope.errorMessage = "";
   $scope.DisplayData = [];
   $scope.UserInterest = [];
   $scope.NoInterest = false;
 
   //------------- CHECK THE CURRENT USER HOW MANY INTERESTS THEY HAVE ---------
-  var userRef = firebase.database().ref("users/" + "aUxZ8uPNgbc4USL4gTr1CXBiHHN2");
+  var userRef = firebase.database().ref("prod/users/" + "aUxZ8uPNgbc4USL4gTr1CXBiHHN2");
   userRef.on("value", function(snapshot){
     $scope.UserData = snapshot.val();
     $scope.InterestString = $scope.UserData.interest;
@@ -29,7 +26,7 @@ app.controller('InterestCtrl', function($scope, $state) {
 
 
   //------------- CALL THE INTEREST DATA FROM INTEREST REF --------------------
-  var interestRef = firebase.database().ref("interests");
+  var interestRef = firebase.database().ref("prod/interests");
   interestRef.on("value", function(snapshot){
     $scope.InterestData = snapshot.val();
     $scope.interest = {};
@@ -46,24 +43,44 @@ app.controller('InterestCtrl', function($scope, $state) {
     //---------------- FUNCTION TO ADD THE INTEREST  -----------------
     $scope.CaptureInterest = function(interest){
 
-      //IF AN INTEREST ALREADY EXIST
+      //IF AN INTEREST HAS NOT EXIST, PUSH IT TO THE INTEREST DATABASE
       if (typeof interest == "string"){
-          $scope.UserInterest.push(interest);
-          $scope.InterestString = $scope.InterestString + interest +  "," ;
-          var fb = firebase.database().ref("interests");
+          interest = interest.toLowerCase();
+          interest = interest.replace(/\s/g, '');
+
+          //ONLY ADDING IF THE INTEREST IS NOT A DUPLICATE
+          if (!$scope.interest){
+            $scope.errorMessage = "Please input an interest";
+            return;}
+          if ($scope.UserInterest.indexOf(interest) == -1){
+            $scope.UserInterest.push(interest);
+            interest = null;
+          }
+          else{
+            $scope.errorMessage = "You already added this interest";
+          }
+
+            // $scope.InterestString = $scope.InterestString + interest +  "," ;
+          var fb = firebase.database().ref("prod/interests");
           var obj = {};
           obj[interest] = 1;
           fb.update(obj);
       }
 
 
-      //IF AN INTEREST HAS NOT EXIST
+      //IF AN INTEREST HAS EXIST, THEN UPDATE THE NUMBER OF LIKES OF THE INTEREST
       else{
-        $scope.UserInterest.push(interest.name);
-        $scope.InterestString = $scope.InterestString + interest.name +  "," ;
+        //ONLY ADDING IF THE INTEREST IS NOT A DUPLICATE
+        if ($scope.UserInterest.indexOf(interest.name) == -1){
+          $scope.UserInterest.push(interest.name);
+          $scope.InterestString = $scope.InterestString + interest.name +  "," ;
+        }
+        else{
+          $scope.errorMessage = "You already added this interest";
+        }
       }
 
-      //SEND INFO TO THE USER DATABASE
+      //-----SEND INFO TO THE USER DATABASE--------
       userRef.update({
         "interest": $scope.InterestString
       });
@@ -80,7 +97,7 @@ app.controller('InterestCtrl', function($scope, $state) {
       }
       console.log($scope.updateString);
       userRef.update({interest: $scope.updateString});
-      $state.go('interest'); 
+      $state.go('interest');
     };
   });
 });

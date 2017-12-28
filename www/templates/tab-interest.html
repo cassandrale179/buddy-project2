@@ -12,26 +12,19 @@
     </div>
   </div>
 
-    <!-- ______________________ ADDING BUTTON _______________________________ -->
-  <!-- <div ng-click="AddInterest()" class="float-button">
-    <span class="height-fix">
-      <a class="content">
-        <i class="ion-plus-round"> </i>
-      </a>
-    </span>
-  </div> -->
-
 
   <!-- _______________________ CONTENT OF INTEREST PAGE _______________________ -->
   <ion-content>
     <div id="B">
       <div id="C">
+        <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
         <input type="text" placeholder="Search An Interest..." ng-model="SearchInterest"/>
         <div  ng-repeat="interest in DisplayData | filter: searchInterest" ng-click="CaptureInterest(interest)">
           {{interest.name}}
           <span>{{interest.likes}} like this</span>
         </div>
         <button class="button button-block" ng-click="CaptureInterest(SearchInterest)">ADD MY OWN INTEREST </button>
+        <button class="button button-block button-dark" ui-sref="match"> FIND ME A BUDDY!</button>
       </div>
 
       <!-- ______________ DISPLAY LIST OF INTERESTS OF USERS _____________________ -->
