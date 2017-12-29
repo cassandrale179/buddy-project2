@@ -3,7 +3,7 @@
 A proper conversion of the Buddy Project using Ionic 1 framework. 
 
 ## Testing the app on browser 
-Prerequesites: to test app on either browser or phone, make sure the following components are installed: 
+To test app on either browser or phone, make sure the following components are installed: 
 ```
 npm install -g cordova ionic 
 ```
