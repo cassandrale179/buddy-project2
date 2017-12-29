@@ -8,5 +8,9 @@ app.controller('LoginCtrl', ['$scope', '$state', '$firebaseAuth',
           console.log("User logged in successfully!");
           $state.go('tab.profile');
         })
-    }
-}])
+        .catch(function(error){
+          $scope.errorMessage = error.message;
+          console.log(error);
+        });
+    };
+}]);

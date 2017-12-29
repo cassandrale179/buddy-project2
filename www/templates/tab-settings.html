@@ -1,10 +1,10 @@
 <ion-view view-title="Settings">
   <ion-content>
     <ion-list>
-    <ion-toggle ng-model="settings.enableFriends">
-        Show My Location
-    </ion-toggle>
-    <ion-item ng-click="LogOut()"> Log Out </ion-item>
+      <ion-toggle><i class="icon ion-location"></i>Show My Location</ion-toggle>
+      <ion-item ng-click="UploadPicture()"><i class="icon ion-camera"></i>Change Profile Picture</ion-item>
+      <ion-item><i class="icon ion-edit"></i>Edit My Bio</ion-item>
+      <ion-item ng-click="LogOut()"><i class="icon ion-log-out"></i> Log Out </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

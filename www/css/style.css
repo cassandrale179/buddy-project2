@@ -26,6 +26,11 @@ input{
   margin-bottom: 5px;
 }
 
+i{
+  font-size: 20px;
+  margin-right: 10px;
+}
+
 
 
 /*----- LIST OF CLASSES IN ALPHABETICAL ORDER ------ */
@@ -44,6 +49,12 @@ input{
 
 .col-border{
   border: 0.1px #E5E7E9 solid;
+}
+
+.error{
+  color: #CB4335;
+  text-align: center;
+  font-style: italic;
 }
 
 /*----- PADDING INSIDE DIV ------ */
@@ -160,5 +171,5 @@ input{
 
 /*---------------------- BUDDIES PAGE STYLING ----------------------- */
 #D{
-  padding-top: 13%;
+  padding-top: 13% !important;
 }

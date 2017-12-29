@@ -16,7 +16,8 @@
   <ion-content class="padding below-nav-bar">
     <div id="A">
       <div id="A1">
-        <img src="https://www.rhsmith.umd.edu/files/Images/News/2015/headshots/2.jpg" />
+        <!-- <img src="https://www.rhsmith.umd.edu/files/Images/News/2015/headshots/2.jpg" /> -->
+        <img ng-src="{{pictureUrl}}" />
         <h4>{{name}}</h4>
         <h5>Philadelphia, PA</h5>
         <p>{{description}} </p>
@@ -29,11 +30,11 @@
           <h6>Age</h6>
         </div>
         <div class="col col-border">
-          <h4>5</h4>
+          <h4>{{interests}}</h4>
           <h6>Interests</h6>
         </div>
         <div class="col col-border">
-          <h4>101</h4>
+          <h4>0</h4>
           <h6>Buddies</h6>
         </div>
       </div>
