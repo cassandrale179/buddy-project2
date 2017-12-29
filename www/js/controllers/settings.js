@@ -12,7 +12,6 @@ app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera) {
               quality: 100,
               destinationType: Camera.DestinationType.DATA_URL,
               sourceType: Camera.PictureSourceType.CAMERA,
-              sourceType: Camera.PictureSourceType.PHOTOLIBRARY, 
               allowEdit: true,
               encodingType: Camera.EncodingType.JPEG,
               targetWidth: 100,

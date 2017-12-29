@@ -9,7 +9,7 @@
       </span>
     </div> -->
 
-
+  <!-- ________________________ NAVIGATION BAR _______________________________ -->
   <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
     <div class="tabs tabs2">
       <a class="tab-item" href="#/tab/buddies">
@@ -20,6 +20,20 @@
       </a>
     </div>
   </div>
+
+
+
+  <!-- ________________________ IONIC CONTENT _______________________________ -->
   <ion-content>
+    <div id="E">
+      <ion-list>
+        <ion-item ng-repeat="user in MatchesArray" class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+          <img ng-src="{{user.pictureUrl}}">
+          {{user.name}}
+          <h6> {{user.common}}</h6>
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+      </ion-list>
+    </div>
   </ion-content>
 </ion-view>

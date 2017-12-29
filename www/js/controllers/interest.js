@@ -1,7 +1,7 @@
 app.controller('InterestCtrl', function($scope, $state, $firebaseAuth, $firebaseArray, $firebaseObject) {
-  var auth = $firebaseAuth();
-  auth.$onAuthStateChanged(function(currentUser){
+  $firebaseAuth().$onAuthStateChanged(function(user){
     console.log("User logged in!");
+    console.log("Current user", user);
 
     //----------------------- GLOBAL VARIABLES TO BE USED ----------------------
     $scope.errorMessage = "";
@@ -9,7 +9,7 @@ app.controller('InterestCtrl', function($scope, $state, $firebaseAuth, $firebase
     $scope.NoInterest = false;
 
     //------------- CHECK THE CURRENT USER HOW MANY INTERESTS THEY HAVE ---------
-    var userRef = firebase.database().ref("prod/users/" + currentUser.uid);
+    var userRef = firebase.database().ref("prod/users/" + user.uid);
     userRef.on("value", function(snapshot){
       $scope.UserData = snapshot.val();
       $scope.InterestString = $scope.UserData.interest;
@@ -36,20 +36,7 @@ app.controller('InterestCtrl', function($scope, $state, $firebaseAuth, $firebase
     $scope.interestData = $firebaseArray(interestRef);
     interestObject.$loaded().then(function(x){
       console.log(x);
-    })
-    // interestRef.on("value", function(snapshot){
-    //   $scope.InterestData = snapshot.val();
-    //   $scope.interest = {};
-    //   for (var key in $scope.InterestData){
-    //     $scope.interest.name = key;
-    //     $scope.interest.likes = $scope.InterestData[key];
-    //     $scope.DisplayData.push($scope.interest);
-    //     $scope.interest = {};
-    //   }
-    //   console.log($scope.DisplayData);
-    //   $scope.$apply();
-
-
+    });
 
 
 
@@ -118,7 +105,7 @@ app.controller('InterestCtrl', function($scope, $state, $firebaseAuth, $firebase
         $state.go('interest');
       };
 
-  }) //End of $onAuthStateChanged
+  }); //End of $onAuthStateChanged
 
 
 });

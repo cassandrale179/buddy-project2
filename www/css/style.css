@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Palanquin+Dark:700');
 
 /*----- STANDARD CSS CUSTOMIZATION ------ */
 h1, h3, h4, h5, h6, p{
@@ -6,6 +7,7 @@ h1, h3, h4, h5, h6, p{
 
 h1{
   color: black;
+  font-family: 'Palanquin Dark', sans-serif;
 }
 
 h5{
@@ -145,11 +147,9 @@ i{
   color: white;
 }
 
-
-
 /*---------------------- INTEREST PAGE STYLING ----------------------- */
-#B{
-  padding-top: 13%;
+#B, #C, #D, #E{
+  padding-top: 13% !important;
 }
 
 #B1 h4{
@@ -167,9 +167,10 @@ i{
   color: #A6ACAF;
 }
 
+#E h6{
+  text-align: left;
+}
 
-
-/*---------------------- BUDDIES PAGE STYLING ----------------------- */
-#D{
-  padding-top: 13% !important;
+#E img{
+  object-fit: cover; 
 }
