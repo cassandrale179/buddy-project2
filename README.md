@@ -11,7 +11,7 @@ Installing Cordova or Ionic requires [Node](https://nodejs.org/en/) and [npm](ht
 
 To test this app on the browser, run the following commands:
 ```
-git clone "https://github.com/cassandrale179/buddy-project2"
+git clone "https://github.com/cassandrale179/buddy-project2.git"
 cd buddy-project2
 $ionic serve
 ```
