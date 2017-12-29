@@ -20,6 +20,17 @@ app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera) {
               saveToPhotoAlbum: false,
         	     correctOrientation:true
             };
+
+
+            $cordovaCamera.getPicture(options).then(function(imageData) {
+               var imageObjectRef = firebase.storage().ref('profilePictures/' + user.uid + '/profilePicture.jpg');
+              // var image = document.getElementById('myImage');
+              // image.src = "data:image/jpeg;base64," + imageData;
+              imageObjectRef.putString(imageData, 'base64', {contentType:'image/jpg'});
+              console.log("Successfully captured image");
+            }, function(err) {
+              console.log(err);
+            });
           });
         };
 
