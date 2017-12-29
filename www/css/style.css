@@ -26,6 +26,11 @@ input{
   margin-bottom: 5px;
 }
 
+i{
+  font-size: 20px;
+  margin-right: 10px;
+}
+
 
 
 /*----- LIST OF CLASSES IN ALPHABETICAL ORDER ------ */
@@ -160,5 +165,5 @@ input{
 
 /*---------------------- BUDDIES PAGE STYLING ----------------------- */
 #D{
-  padding-top: 13%;
+  padding-top: 13% !important;
 }

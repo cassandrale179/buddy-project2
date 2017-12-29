@@ -7,6 +7,6 @@ app.controller('LoginCtrl', ['$scope', '$state', '$firebaseAuth',
         .then(function(res){
           console.log("User logged in successfully!");
           $state.go('tab.profile');
-        })
-    }
-}])
+        });
+    };
+}]); 

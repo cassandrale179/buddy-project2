@@ -1,13 +1,13 @@
 app.controller('InterestCtrl', function($scope, $state) {
 
-  //----------------------- GLOBAL VARIABLES TO BE USED ---------------------- 
+  //----------------------- GLOBAL VARIABLES TO BE USED ----------------------
   $scope.errorMessage = "";
   $scope.DisplayData = [];
   $scope.UserInterest = [];
   $scope.NoInterest = false;
 
   //------------- CHECK THE CURRENT USER HOW MANY INTERESTS THEY HAVE ---------
-  var userRef = firebase.database().ref("prod/users/" + "aUxZ8uPNgbc4USL4gTr1CXBiHHN2");
+  var userRef = firebase.database().ref("prod/users/" + "HU3IqF8KodfYPY9yKMPuEHYC2A53");
   userRef.on("value", function(snapshot){
     $scope.UserData = snapshot.val();
     $scope.InterestString = $scope.UserData.interest;
@@ -54,17 +54,17 @@ app.controller('InterestCtrl', function($scope, $state) {
             return;}
           if ($scope.UserInterest.indexOf(interest) == -1){
             $scope.UserInterest.push(interest);
+            $scope.InterestString = $scope.InterestString + interest +  "," ;
+            var fb = firebase.database().ref("prod/interests");
+            var obj = {};
+            obj[interest] = 1;
+            fb.update(obj);
             interest = null;
           }
           else{
             $scope.errorMessage = "You already added this interest";
           }
 
-            // $scope.InterestString = $scope.InterestString + interest +  "," ;
-          var fb = firebase.database().ref("prod/interests");
-          var obj = {};
-          obj[interest] = 1;
-          fb.update(obj);
       }
 
 

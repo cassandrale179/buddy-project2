@@ -1,3 +1,3 @@
-app.controller('BuddiesCtrl', function($scope, Chats) {
+app.controller('BuddiesCtrl', function($scope) {
 
 });

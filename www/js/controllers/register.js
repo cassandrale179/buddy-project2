@@ -13,7 +13,7 @@ app.controller('RegisterCtrl',  ['$scope', '$state',
           buddies: "",
           birthyear: $scope.user.birthyear,
           location: "Philadelphia, PA",
-          pictureUrl: "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/default.png?alt=media&token=540dfe34-5559-4d2f-8e42-27258502ea01"
+          pictureUrl: "https://firebasestorage.googleapis.com/v0/b/buddy-project-d9fe9.appspot.com/o/default-avatar.png?alt=media&token=dd0f36d1-5424-43a0-8d51-d2e22f2e5aa2"
         };
         var userRef = firebase.database().ref("prod/users/");
         var user = firebase.auth().currentUser;
