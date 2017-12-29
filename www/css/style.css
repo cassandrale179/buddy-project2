@@ -51,6 +51,12 @@ i{
   border: 0.1px #E5E7E9 solid;
 }
 
+.error{
+  color: #CB4335;
+  text-align: center;
+  font-style: italic;
+}
+
 /*----- PADDING INSIDE DIV ------ */
 .padding{
   padding: 10% !important;

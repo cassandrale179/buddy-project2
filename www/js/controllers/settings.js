@@ -9,9 +9,10 @@ app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera) {
         $scope.UploadPicture = function(){
           document.addEventListener("deviceready", function () {
             var options = {
-              quality: 50,
+              quality: 100,
               destinationType: Camera.DestinationType.DATA_URL,
               sourceType: Camera.PictureSourceType.CAMERA,
+              sourceType: Camera.PictureSourceType.PHOTOLIBRARY, 
               allowEdit: true,
               encodingType: Camera.EncodingType.JPEG,
               targetWidth: 100,
@@ -28,6 +29,18 @@ app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera) {
               // image.src = "data:image/jpeg;base64," + imageData;
               imageObjectRef.putString(imageData, 'base64', {contentType:'image/jpg'});
               console.log("Successfully captured image");
+
+
+              //-------- UPDATE USER PROFILE PICTURE -------------
+              imageObjectRef.getDownloadURL().then(function(url)
+              {
+                var UserRef = firebase.database().ref("prod/users/" + user.uid);
+                UserRef.update({pictureUrl: url});
+              });
+
+
+
+            //-------- IF THERE ARE ERROR, DISPLAYED IT HERE -------------
             }, function(err) {
               console.log(err);
             });
