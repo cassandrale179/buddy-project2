@@ -9,7 +9,7 @@ npm install -g cordova ionic
 ```
 Installing Cordova or Ionic requires [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed on your machine. 
 
-To test this app on the browswer, run the following commands:
+To test this app on the browser, run the following commands:
 ```
 git clone "https://github.com/cassandrale179/buddy-project2"
 cd buddy-project2
