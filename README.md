@@ -1,4 +1,4 @@
-# buddy-project2
+# The Buddy Project v2.0
 
 A proper conversion of the Buddy Project using Ionic 1 framework. 
 
