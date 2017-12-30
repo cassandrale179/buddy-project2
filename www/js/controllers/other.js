@@ -1,7 +1,20 @@
-app.controller('OtherCtrl', function($scope, $state, $stateParams, $firebaseAuth) {
+app.controller('OtherCtrl', function($scope, $state, $stateParams, $firebaseAuth, $firebaseArray) {
   $scope.sent = false;
   var dateObj = (new Date()).getFullYear();
   $firebaseAuth().$onAuthStateChanged(function(user) {
+
+      var buddiesRef = firebase.database().ref("prod/users/" + user.uid + "/buddies");
+      buddiesRef.on("value", function(snapshot){
+        if (snapshot.val().hasOwnProperty($stateParams.otherId)){
+          console.log("true");
+          $scope.friended = true;
+        }
+        else{
+          $scope.friended = false;
+        }
+      });
+
+
       var otherRef = firebase.database().ref("prod/users/" + $stateParams.otherId);
       otherRef.on("value", function(snapshot){
 
@@ -16,8 +29,10 @@ app.controller('OtherCtrl', function($scope, $state, $stateParams, $firebaseAuth
 
 
         //--------- CHECK THE OTHER USER STATUS ------------
-        if ($scope.friendrequests.hasOwnProperty(user.uid)){
-          $scope.sent = true;
+        if ($scope.friendrequests){
+          if ($scope.friendrequests.hasOwnProperty(user.uid)){
+            $scope.sent = true;
+          }
         }
         $scope.$apply();
       });

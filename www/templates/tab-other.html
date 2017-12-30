@@ -4,7 +4,7 @@
         <ion-content class="padding below-nav-bar">
           <div id="A">
             <div id="A1">
-              <!-- <img src="https://www.rhsmith.umd.edu/files/Images/News/2015/headshots/2.jpg" /> -->
+              <!-- <div ng-show="friended" class="success">Angela Moss is your friend</div> -->
               <img ng-src="{{pictureUrl}}" />
               <h4>{{name}}</h4>
               <h5>Philadelphia, PA</h5>
@@ -28,9 +28,12 @@
             </div>
 
             <!-- ___________________ EDIT YOUR PROFILE BUTTON  _______________________ -->
-            <div id="A2">
+            <div id="A2" ng-hide="friended">
               <button class="button button-block button-dark" ng-hide="sent" ng-click="SendRequest()"> Send Friend Request </button>
               <button class="button button-block button-block2" ng-show="sent"> Request Sent </button>
+            </div>
+            <div id="A3" ng-show="friended">
+              <button class="button button-block button-success"> {{name}} is your friend </button>
             </div>
           </div>
 

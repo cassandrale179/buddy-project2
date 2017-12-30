@@ -42,6 +42,11 @@ u{
 .button-block2{
   color: #515A5A !important;
 }
+
+.button-success{
+  background: #117864;
+  color: white; 
+}
 .center1{
   display: flex !important;
   flex-wrap: nowrap !important;
@@ -123,6 +128,13 @@ u{
   background: black;
   color: white;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.success{
+  margin-top: -20px !important;
+  font-style: italic;
+  color: #117864;
+  text-align: center;
 }
 
 
