@@ -26,14 +26,13 @@
               </div>
             </div>
 
-            <!-- ___________________ EDIT YOUR PROFILE BUTTON  _______________________ -->
-            <div id="A2" ng-hide="friended">
-              <button class="button button-block button-dark" ng-hide="sent" ng-click="SendRequest()"> Send Friend Request </button>
-              <button class="button button-block button-block2" ng-show="sent"> Request Sent </button>
-            </div>
-            <div id="A3" ng-show="friended">
-              <button class="button button-block button-success"> {{name}} is your friend </button>
-            </div>
+            <!-- ___________________ FRIEND REQUEST SCENARIO  _______________________ -->
+            <button ng-show="show==1" class="button button-block button-dark" ng-click="SendRequest()">
+              Send Friend Request
+            </button>
+            <button ng-show="show==2" class="button button-block button-block2"> Request Sent </button>
+            <button ng-show="show==3" class="button button-block button-success"> {{name}} is your friend </button>
+            <button ng-show="show==4" class="button button-block button-block3">Accept {{name}}'s request? </button>
           </div>
 
     </ion-content>

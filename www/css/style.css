@@ -43,9 +43,14 @@ u{
   color: #515A5A !important;
 }
 
+.button-block3{
+  background: #BDC3C7;
+  color: white; 
+}
+
 .button-success{
   background: #117864;
-  color: white; 
+  color: white;
 }
 .center1{
   display: flex !important;

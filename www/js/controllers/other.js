@@ -1,20 +1,20 @@
 app.controller('OtherCtrl', function($scope, $state, $stateParams, $firebaseAuth, $firebaseArray) {
-  $scope.sent = false;
+  $scope.show = 1; 
   var dateObj = (new Date()).getFullYear();
   $firebaseAuth().$onAuthStateChanged(function(user) {
 
+      //--------------- CHECK IF USER A AND USER B ARE ALREADY FRIEND -----------------
       var buddiesRef = firebase.database().ref("prod/users/" + user.uid + "/buddies");
       buddiesRef.on("value", function(snapshot){
-        if (snapshot.val().hasOwnProperty($stateParams.otherId)){
-          console.log("true");
-          $scope.friended = true;
-        }
-        else{
-          $scope.friended = false;
+        if (snapshot.val()){
+          if (snapshot.val().hasOwnProperty($stateParams.otherId)){
+            console.log("true");
+            $scope.show = 3;
+          }
         }
       });
 
-
+      //-------------------------- GET USER B INFORMATION -------------------------
       var otherRef = firebase.database().ref("prod/users/" + $stateParams.otherId);
       otherRef.on("value", function(snapshot){
 
@@ -28,15 +28,30 @@ app.controller('OtherCtrl', function($scope, $state, $stateParams, $firebaseAuth
         $scope.friendrequests = snapshot.val().friendrequests;
 
 
-        //--------- CHECK THE OTHER USER STATUS ------------
+        //--------- IF USER A HAS ALREADY SEND A FRIEND REQUEST TO USER B ------------
+        //-------- THEN ON USER'S B PROFILE, IT SAYS FRIEND REQUEST SENT --------------
         if ($scope.friendrequests){
           if ($scope.friendrequests.hasOwnProperty(user.uid)){
-            $scope.sent = true;
+            $scope.sent = 2;
           }
         }
+
+
+        //---------- IF USER B HAS ALREADY SEND A FRIEND REQUEST TO USER A ----------
+        // --------- THEN USER A ONLY NEEDS TO ACCEPT THE FRIEND REQUEST --------------
+        var userRef = firebase.database().ref("prod/users" + user.uid + "/friendrequests");
+        userRef.on("value", function(usersnap){
+          if (usersnap.val()){
+            if (usersnap.val().hasOwnProperty($stateParams.otherId)){
+              $scope.show = 4;
+            }
+          }
+        });
         $scope.$apply();
       });
 
+
+      //-----  IF USER A SEND USER B FRIEND REQUEST, THIS IS TO PUSHED TO USER B FIREBASE ------
       $scope.SendRequest = function(){
         var obj = {};
         otherRef.child("friendrequests/" + user.uid).update({
