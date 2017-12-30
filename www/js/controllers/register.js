@@ -10,7 +10,6 @@ app.controller('RegisterCtrl',  ['$scope', '$state',
           email: $scope.user.email,
           description: "This is a part where you can write a few short descriptive sentences about your bio",
           interest: "",
-          buddies: "",
           birthyear: $scope.user.birthyear,
           location: "Philadelphia, PA",
           pictureUrl: "https://firebasestorage.googleapis.com/v0/b/buddy-project-d9fe9.appspot.com/o/default-avatar.png?alt=media&token=dd0f36d1-5424-43a0-8d51-d2e22f2e5aa2"

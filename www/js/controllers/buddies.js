@@ -2,6 +2,7 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
   $firebaseAuth().$onAuthStateChanged(function(user){
 
     $scope.PendingArr = [];
+    $scope.BuddiesArr = [];
 
     //--------- ACCESS USER FRIEND REQUESTS AND CURRENT FRIENDS  ----------
     var pendingRef = firebase.database().ref("prod/users/" + user.uid + "/friendrequests");
@@ -27,6 +28,9 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
           });
           $state.go("tab.buddies");
         }
+        else{
+          $scope.NoPending = true;
+        }
     });
 
 
@@ -36,11 +40,12 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
       $scope.buddiesPeople.$loaded().then(function(x){
         if ($scope.buddiesPeople.length > 0){
           angular.forEach($scope.buddiesPeople, function(buddy){
-
+            $scope.BuddiesArr.push(buddy);
           });
         }
         else{
           console.log("You have no buddies at the moment");
+          $scope.NoBuddies = true;
         }
       });
 
@@ -62,10 +67,16 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
             name: buddiesName,
             pictureUrl: buddiesPic
           });
+          pendingRef.child(buddiesId).remove().then(function(){
+            console.log("Request pending removed");
+          })
+          .catch(function(){
+            console.log("Unable to remove");
+          });
         }
         //------------- IF USER CLICK CANCEL ------------
         else {
-           console.log('Cancel');
+          console.log("User click cancel");
         }
      });
     };

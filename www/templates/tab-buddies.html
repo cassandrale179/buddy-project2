@@ -16,17 +16,30 @@
   <ion-content>
     <div id="D">
       <div class="list">
-        <div class="item item-divider"> Pending Requests</div>
-        <ion-item class="item-remove-animate item-avatar item-icon-right"
-                  type="item-text-wrap"
-                  ng-click="showConfirm(req.name, req.id, req.pictureUrl)">
+
+        <!-- ________________________ PENDING REQUESTS  ______________________ -->
+        <div ng-hide="NoPending" class="item item-divider"> Pending Requests</div>
+        <ion-item ng-repeat="req in PendingArr"
+                  ng-click="showConfirm(req.name, req.id, req.pictureUrl)"
+                  class="item-remove-animate item-avatar item-icon-right"
+                  type="item-text-wrap">
           <img ng-src="{{req.pictureUrl}}">
           <b ui-sref="tab.other({otherId: req.id})">{{req.name}}</b> wants to be friend!
         </ion-item>
+
+        <!-- ________________________ YOUR FRIENDS ______________________ -->
         <div class="item item-divider"> Your Friends </div>
         <h4 ng-show="NoBuddies"> You have no buddies at the moment.
           Go to Your Matches to find a friend! </h4>
-
+          <div ng-hide="NoBuddies">
+            <ion-item ng-repeat="buddies in BuddiesArr"
+                      class="item-remove-animate item-avatar item-icon-right"
+                      type="item-text-wrap"
+                      ui-sref="tab.other({otherId: buddies.id})" >
+              <img ng-src="{{buddies.pictureUrl}}">
+              {{buddies.name}}
+            </ion-item>
+          </div>
       </div>
     </div>
   </ion-content>

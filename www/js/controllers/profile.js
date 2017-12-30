@@ -15,11 +15,13 @@ function($scope) {
         $scope.friendrequests = snapshot.val().friendrequests;
 
         //---------- CHECK IF THERE ARE ANY PENDING REQUEST -------------
-        if (Object.keys($scope.friendrequests).length > 0){
-          $scope.errorMessage = "You have " + Object.keys($scope.friendrequests).length.toString() + " friend request";
+        if ($scope.friendrequests){
+          if (Object.keys($scope.friendrequests).length > 0){
+            $scope.errorMessage = "You have " + Object.keys($scope.friendrequests).length.toString() + " friend request";
+          }
         }
         else{
-          $scope.errorMessage = ""; 
+          $scope.errorMessage = "";
         }
         $scope.$apply();
        });
