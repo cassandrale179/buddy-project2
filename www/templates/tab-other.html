@@ -32,7 +32,7 @@
             </button>
             <button ng-show="show==2" class="button button-block button-block2"> Request Sent </button>
             <button ng-show="show==3" class="button button-block button-success"> {{name}} is your friend </button>
-            <button ng-show="show==4" class="button button-block button-block3" ng-click="showConfirm(name,buddyid,pictureUrl)">Accept {{name}}'s request? </button>
+            <button ng-show="show==4" class="button button-block button-block3" ui-sref="tab.buddies">Accept {{name}}'s request? </button>
           </div>
 
     </ion-content>
