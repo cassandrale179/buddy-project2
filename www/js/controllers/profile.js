@@ -13,6 +13,8 @@ function($scope) {
         $scope.pictureUrl = snapshot.val().pictureUrl;
         $scope.interests = snapshot.val().interest.split(",").length - 1;
         $scope.friendrequests = snapshot.val().friendrequests;
+        $scope.buddies = snapshot.val().buddies;
+        $scope.numberOfFriends = Object.keys($scope.buddies).length;
 
         //---------- CHECK IF THERE ARE ANY PENDING REQUEST -------------
         if ($scope.friendrequests){
