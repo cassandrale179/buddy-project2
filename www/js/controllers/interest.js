@@ -60,6 +60,7 @@ app.controller('InterestCtrl', function($scope, $state, $firebaseAuth, $firebase
 
             if ($scope.UserInterest.indexOf(interest.$id) == -1){
               $scope.UserInterest.push(interest.$id);
+              $scope.InterestString = $scope.InterestString + interest.$id +  "," ;
             }
             else{
               $scope.errorMessage = "You already added this interest";

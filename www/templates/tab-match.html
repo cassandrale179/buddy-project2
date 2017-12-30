@@ -27,7 +27,7 @@
   <ion-content>
     <div id="E">
       <ion-list>
-        <ion-item ng-repeat="user in MatchesArray" class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+        <ion-item ng-repeat="user in MatchesArray" class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" ui-sref="other({otherId: user.uid})">
           <img ng-src="{{user.pictureUrl}}">
           {{user.name}}
           <h6> {{user.common}}</h6>

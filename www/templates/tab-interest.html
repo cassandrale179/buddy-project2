@@ -17,11 +17,13 @@
   <ion-content>
     <div id="B">
       <div id="C">
-        <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
+        <div class="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
         <input type="text" placeholder="Search An Interest..." ng-model="SearchInterest.$id"/>
-        <div  ng-repeat="interest in interestData | filter: SearchInterest" ng-click="CaptureInterest(interest)">
-          {{interest.$id}}
-          <span>{{interest.$value}} like this</span>
+        <div id="C1">
+          <div ng-repeat="interest in interestData | filter: SearchInterest" ng-click="CaptureInterest(interest)">
+            {{interest.$id}}
+            <span>{{interest.$value}} like this</span>
+          </div>
         </div>
         <button class="button button-block" ng-click="CaptureInterest(SearchInterest)">ADD MY OWN INTEREST </button>
         <button class="button button-block button-dark" ui-sref="match"> FIND ME A BUDDY!</button>

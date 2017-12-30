@@ -167,10 +167,15 @@ i{
   color: #A6ACAF;
 }
 
+#C1{
+  max-height: 100px;
+  overflow: auto;
+}
+
 #E h6{
   text-align: left;
 }
 
 #E img{
-  object-fit: cover; 
+  object-fit: cover;
 }

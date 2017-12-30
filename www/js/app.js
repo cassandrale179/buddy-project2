@@ -16,6 +16,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
+// state for non-tabs templates
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('login', {
@@ -41,6 +43,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
 
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -58,6 +61,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controller: 'ProfileCtrl'
       }
     }
+  })
+  .state('other', {
+    url: '/other/:otherId',
+    views: {
+      'tab-other': {
+        templateUrl: 'templates/tab-other.html',
+        controller: 'OtherCtrl'
+      }
+    }
+
   })
   .state('tab.buddies', {
     url: '/buddies',
