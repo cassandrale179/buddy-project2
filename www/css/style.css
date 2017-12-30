@@ -159,7 +159,7 @@ u{
   padding-top: 13% !important;
 }
 
-#B1 h4{
+#B1 h4, #D h4{
   padding-left: 10%;
   padding-right: 10%;
 }
@@ -183,6 +183,6 @@ u{
   text-align: left;
 }
 
-#E img{
+#D img, #E img{
   object-fit: cover;
 }
