@@ -62,11 +62,27 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
 
        //----------- IF USER APPROVE OF REQUEST -------------
         if(res) {
+
+          //----------- ADD USER B TO USER A (CURRENT USER)'S FRIEND LIST --------
           buddiesRef.child(buddiesId).update({
             id: buddiesId,
             name: buddiesName,
             pictureUrl: buddiesPic
           });
+
+          //----------- ADD USER B TO USER A (CURRENT USER)'S FRIEND LIST --------
+            var otherBuddiesRef = firebase.database().ref("prod/users/" + buddiesId + "/buddies");
+            var userRef = firebase.database().ref("prod/users/" + user.uid);
+            userRef.on("value", function(userinfo){
+              otherBuddiesRef.child(user.uid).update({
+                id: user.uid,
+                name: userinfo.val().name,
+                pictureUrl: userinfo.val().pictureUrl
+              });
+            });
+
+
+            //------------ REMOVE PENDING FRIEND REQUEST -------------------
           pendingRef.child(buddiesId).remove().then(function(){
             console.log("Request pending removed");
           })
