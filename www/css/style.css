@@ -33,6 +33,9 @@ i{
   margin-right: 10px;
 }
 
+u{
+  color: #CB4335;
+}
 
 
 /*----- LIST OF CLASSES IN ALPHABETICAL ORDER ------ */
@@ -140,6 +143,7 @@ i{
   border-radius: 300px;
   display: block;
   margin: auto;
+  margin-top: 10px;
 }
 
 #A2{

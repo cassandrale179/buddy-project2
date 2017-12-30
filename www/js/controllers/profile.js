@@ -12,6 +12,15 @@ function($scope) {
         $scope.age = dateObj - $scope.birthyear;
         $scope.pictureUrl = snapshot.val().pictureUrl;
         $scope.interests = snapshot.val().interest.split(",").length - 1;
+        $scope.friendrequests = snapshot.val().friendrequests;
+
+        //---------- CHECK IF THERE ARE ANY PENDING REQUEST -------------
+        if (Object.keys($scope.friendrequests).length > 0){
+          $scope.errorMessage = "You have " + Object.keys($scope.friendrequests).length.toString() + " friend request";
+        }
+        else{
+          $scope.errorMessage = ""; 
+        }
         $scope.$apply();
        });
     }
