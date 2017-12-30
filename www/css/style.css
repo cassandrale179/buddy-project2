@@ -36,6 +36,9 @@ i{
 
 
 /*----- LIST OF CLASSES IN ALPHABETICAL ORDER ------ */
+.button-block2{
+  color: #515A5A !important;
+}
 .center1{
   display: flex !important;
   flex-wrap: nowrap !important;

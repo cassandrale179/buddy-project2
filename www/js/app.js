@@ -62,10 +62,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-  .state('other', {
+  .state('tab.other', {
     url: '/other/:otherId',
     views: {
-      'tab-other': {
+      'tab-profile': {
         templateUrl: 'templates/tab-other.html',
         controller: 'OtherCtrl'
       }
