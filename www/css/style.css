@@ -45,7 +45,7 @@ u{
 
 .button-block3{
   background: #BDC3C7;
-  color: white; 
+  color: white;
 }
 
 .button-success{
@@ -88,37 +88,6 @@ u{
  object-fit: cover;
 }
 
-
-/* --------- MATERIAL UI FLOATING BUTTON ------------ */
-.float-button {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  width: 30px;
-  padding: 25px;
-  font-size: 40px;
-  background: black;
-  position: fixed;
-  bottom: 20px; /* Adjust to where you want it */
-  right: 20px; /* Adjust to where you want it */
-  z-index: 9999;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-.float-button .height_fix {
-  margin-top: 100%;
-}
-
-.float-button .content {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  margin-top: -20px; /* Note, this must be half the font size */
-  color: white;
-}
 
 .float-right{
   display: block;
