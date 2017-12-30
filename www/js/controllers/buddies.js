@@ -55,7 +55,7 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
     $scope.showConfirm = function(buddiesName, buddiesId, buddiesPic) {
      var confirmPopup = $ionicPopup.confirm({
         title: "Accept " + buddiesName + " 's request?",
-        template:  "Click OK to accept or tap on " + buddiesName + "'s name to view their profile"
+        template:  "Click OK to accept"
      });
 
      confirmPopup.then(function(res) {
