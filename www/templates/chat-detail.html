@@ -6,18 +6,36 @@
 -->
 <ion-view view-title="{{chat.name}}">
   <ion-content class="padding">
-    <img ng-src="{{chat.pictureUrl}}" style="width: 64px; height: 64px">
-    <p>
+    <div id="F">
+      <img ng-src="{{chat.pictureUrl}}" style="width: 64px; height: 64px">
+
+      <!-- __________ LOAD THE CONVERSATION BETWEEN TWO USERS ___________ -->
+      <div ng-repeat="message in conversation" class="card" ng-style="setColor(m)">
+        <div class="item item-text-wrap">
+          {{message.text}}
+        </div>
+      </div>
+
+
+      <!-- _____________ FORM INPUT THAT ALLOW TWO USERS TO CHAT __________ -->
+      <form>
+        <input type="text" placeholder="Type here" ng-model="newmessage.text" />
+        <p ng-model="newmessage.sender"></p>
+        <p ng-model="newmessage.receiver"></p>
+      </form>
+    </div>
+
+    <!-- <p>
       {{chat.lastText}}
-    </p>
+    </p> -->
     <!-- USER CAN INPUT TEXT TO SEND TO THE OTHER USER -->
-      <div>
+      <!-- <div>
         <form>
           <input type="text" placeholder="Type here" ng-model="newmessage.text" />
           <p ng-model="newmessage.sender"></p>
           <p ng-model="newmessage.receiver"></p>
           <button ng-click="insert(newmessage)">Send</button>
         </form>
-      </div>
+      </div> -->
   </ion-content>
 </ion-view>

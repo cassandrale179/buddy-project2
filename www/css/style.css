@@ -64,6 +64,10 @@ img{
   align-items: center !important;
 }
 
+.card{
+  max-width: 200px !important;
+}
+
 
 .col{
   margin-left: 5px;
@@ -102,6 +106,8 @@ img{
 .ion-edit{
   font-size: 15px;
 }
+
+
 
 .navbar-decor{
   background: black;
@@ -172,4 +178,13 @@ img{
 
 #E h6{
   text-align: left;
+}
+
+
+/*------------- STYLING FOR CHAT PAGE ---------------- */
+#F img{
+  display: block;
+  margin: auto;
+  border-radius: 100px;
+
 }

@@ -41,6 +41,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     templateUrl: 'templates/tab-match.html',
     controller: 'MatchCtrl'
   })
+  .state('chat-detail', {
+    url: '/chats',
+    params: {
+      chatId: "",
+      chatPictureUrl: "",
+      chatName: ""
+    },
+    templateUrl: 'templates/chat-detail.html',
+    controller: 'ChatDetailCtrl'
+  })
 
 
 
@@ -90,15 +100,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+    // .state('tab.chat-detail', {
+    //   url: '/chats',
+    //   params: {
+    //     chatId: "",
+    //     chatPictureUrl: "",
+    //     chatName: ""
+    //   },
+    //   views: {
+    //     'tab-chats': {
+    //       templateUrl: 'templates/chat-detail.html',
+    //       controller: 'ChatDetailCtrl'
+    //     }
+    //   }
+    // })
 
   .state('tab.settings', {
     url: '/settings',
