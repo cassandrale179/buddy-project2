@@ -1,7 +1,12 @@
 app.controller('ProfileCtrl',  ['$scope', '$state',
 function($scope) {
+
+  //--------- VARIABLES TO BE USED ---------
   var user = firebase.auth().currentUser;
+  $scope.numberOfFriends = 0;
   var dateObj = (new Date()).getFullYear();
+
+  //---------- GET USER INFORMATION ----------------
   firebase.auth().onAuthStateChanged(function(user) {
     if (user){
       var userRef = firebase.database().ref("prod/users/" + user.uid);
@@ -14,7 +19,12 @@ function($scope) {
         $scope.interests = snapshot.val().interest.split(",").length - 1;
         $scope.friendrequests = snapshot.val().friendrequests;
         $scope.buddies = snapshot.val().buddies;
-        $scope.numberOfFriends = Object.keys($scope.buddies).length;
+
+        if ($scope.buddies){
+          $scope.numberOfFriends = Object.keys($scope.buddies).length;
+        }
+
+
 
         //---------- CHECK IF THERE ARE ANY PENDING REQUEST -------------
         if ($scope.friendrequests){
@@ -29,7 +39,7 @@ function($scope) {
        });
     }
     else{
-       console.log("Please login again");
+       $state.go('login'); 
     }
 
   });
