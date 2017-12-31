@@ -51,6 +51,7 @@ app.controller('InterestCtrl', function($scope, $state, $firebaseAuth, $firebase
 
 
         //IF AN INTEREST HAS NOT EXIST, PUSH IT TO THE INTEREST DATABASE
+          var fb = firebase.database().ref("prod/interests");
         if (!interestObject.hasOwnProperty(interest.$id)){
           console.log("interest does not exist in database");
             interest.$id = interest.$id.toLowerCase();
@@ -66,8 +67,6 @@ app.controller('InterestCtrl', function($scope, $state, $firebaseAuth, $firebase
               $scope.errorMessage = "You already added this interest";
             }
 
-              // $scope.InterestString = $scope.InterestString + interest +  "," ;
-            var fb = firebase.database().ref("prod/interests");
             var obj = {};
             obj[interest.$id] = 1;
             fb.update(obj);
@@ -76,10 +75,15 @@ app.controller('InterestCtrl', function($scope, $state, $firebaseAuth, $firebase
 
         //IF AN INTEREST HAS EXIST, THEN UPDATE THE NUMBER OF LIKES OF THE INTEREST
         else{
+
           //ONLY ADDING IF THE INTEREST IS NOT A DUPLICATE
           if ($scope.UserInterest.indexOf(interest.$id) == -1){
             $scope.UserInterest.push(interest.$id);
             $scope.InterestString = $scope.InterestString + interest.$id +  "," ;
+            interest.$value += 1;
+            var obj2 = {};
+            obj2[interest.$id] = interest.$value;
+            fb.update(obj2);
           }
           else{
             $scope.errorMessage = "You already added this interest";
