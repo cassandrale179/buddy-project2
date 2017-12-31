@@ -1,5 +1,5 @@
 app.controller('ProfileCtrl',  ['$scope', '$state',
-function($scope) {
+function($scope, $state) {
 
   //--------- VARIABLES TO BE USED ---------
   var user = firebase.auth().currentUser;
@@ -39,7 +39,7 @@ function($scope) {
        });
     }
     else{
-       $state.go('login'); 
+       $state.go('login');
     }
 
   });

@@ -3,6 +3,6 @@ angular.module('starter.services', []);
 app.factory('Message', ['$firebaseArray',
   function($firebaseArray) {
     var message = {};
-    return message; 
+    return message;
 
 }]);

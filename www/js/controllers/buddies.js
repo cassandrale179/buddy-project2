@@ -60,14 +60,41 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
 
      confirmPopup.then(function(res) {
 
-       //----------- IF USER APPROVE OF REQUEST -------------
+       //----------- IF USER A APPROVE OF REQUEST -------------
         if(res) {
+          console.log("Accepted friend request!");
+
+          //------------ REMOVE PENDING FRIEND REQUEST -------------------
+          pendingRef.child(buddiesId).remove().then(function(){
+            console.log("Request pending removed");
+          })
+          .catch(function(){
+            console.log("Unable to remove");
+          });
+
+
+          //-------------- CREATE A CONVERSATION BETWEEN THE USERS -----------
+          var chatRef = firebase.database().ref("prod/chats");
+          var convoID = chatRef.push();
+          convoID = convoID.key;
+
+          var messageObject = {
+            sender: user.uid,
+            receiver: buddiesId,
+            timestamp: Date.now(),
+            text: "You are now each other's buddies :) "
+          };
+
+          chatRef.child(convoID).push(messageObject);
+          console.log(convoID);
+
 
           //----------- ADD USER B TO USER A (CURRENT USER)'S FRIEND LIST --------
           buddiesRef.child(buddiesId).update({
             id: buddiesId,
             name: buddiesName,
-            pictureUrl: buddiesPic
+            pictureUrl: buddiesPic,
+            convo: convoID
           });
 
           //----------- ADD USER B TO USER A (CURRENT USER)'S FRIEND LIST --------
@@ -77,18 +104,12 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
               otherBuddiesRef.child(user.uid).update({
                 id: user.uid,
                 name: userinfo.val().name,
-                pictureUrl: userinfo.val().pictureUrl
+                pictureUrl: userinfo.val().pictureUrl,
+                convo: convoID
               });
             });
 
 
-            //------------ REMOVE PENDING FRIEND REQUEST -------------------
-          pendingRef.child(buddiesId).remove().then(function(){
-            console.log("Request pending removed");
-          })
-          .catch(function(){
-            console.log("Unable to remove");
-          });
         }
         //------------- IF USER CLICK CANCEL ------------
         else {
