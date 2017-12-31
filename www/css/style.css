@@ -39,6 +39,9 @@ u{
   color: #CB4335;
 }
 
+img{
+  object-fit: cover;
+}
 
 /*----- LIST OF CLASSES IN ALPHABETICAL ORDER ------ */
 .button-block2{
@@ -169,8 +172,4 @@ u{
 
 #E h6{
   text-align: left;
-}
-
-#D img, #E img{
-  object-fit: cover;
 }

@@ -105,7 +105,8 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
                 id: user.uid,
                 name: userinfo.val().name,
                 pictureUrl: userinfo.val().pictureUrl,
-                convo: convoID
+                convo: convoID,
+                lastText: "You are now each other's buddies :) "
               });
             });
 
