@@ -54,7 +54,7 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
     $scope.setColor = function(newmessage){
       var style = {
         "color": "white",
-        "background": "black"
+        "background": "#2E86C1"
       };
       if (newmessage.sender == user.uid){
         return style;
@@ -64,8 +64,7 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
 
     $scope.setCard = function(newmessage){
       var cardStyle = {
-        "float": "right",
-        "margin-right": "10px"
+        "float": "right"
       };
       if (newmessage.sender == user.uid){
         return cardStyle;

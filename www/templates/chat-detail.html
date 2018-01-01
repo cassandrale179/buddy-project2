@@ -1,16 +1,15 @@
 <ion-view view-title="{{chat.name}}">
   <ion-content>
     <div id="F">
-      <img ng-src="{{chat.pictureUrl}}" style="width: 64px; height: 64px">
+      <img ng-src="{{chat.pictureUrl}}" style="width: 70px; height: 70px">
+      <h4>{{chat.name}}</h4>
 
       <!-- __________ LOAD THE CONVERSATION BETWEEN TWO USERS ___________ -->
-      <div style="width: 100%">
         <div ng-repeat="message in conversation" class="card" ng-style="setCard(message)">
           <div class="item item-text-wrap" ng-style="setColor(message)">
             {{message.text}}
           </div>
         </div>
-      </div>
     </div>
   </ion-content>
 
