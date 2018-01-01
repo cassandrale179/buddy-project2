@@ -14,10 +14,16 @@ app.controller('MatchCtrl', function($scope, $state, $firebaseAuth, $firebaseArr
       //------------- GET OTHER PEOPLE INTEREST FROM FIREBASE ---------------
       console.log("Matches are loading");
       var otherRef = firebase.database().ref("prod/users");
+      var buddiesRef = firebase.database().ref("prod/users/" + owner.uid + "/buddies");
+      $scope.buddiesData = $firebaseArray(buddiesRef);
       $scope.otherData = $firebaseArray(otherRef);
       $scope.otherData.$loaded().then(function(x){
         $scope.MatchesArray = [];
         angular.forEach($scope.otherData, function(user){
+
+          //FILTER OUT OLD FRIENDS
+
+
 
           //GET EACH OTHER USER INTERES
           if (owner.uid != user.$id){
