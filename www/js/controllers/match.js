@@ -59,10 +59,14 @@ app.controller('MatchCtrl', function($scope, $state, $firebaseAuth, $firebaseArr
 
 
       $scope.RandomMatch = function(){
-        var random = Math.floor(Math.random() * $scope.otherData.length);
-        $scope.RandomPerson = $scope.otherData[random];
-        $scope.Random = true;
-        console.log($scope.RandomPerson); 
+        do{
+          var random = Math.floor(Math.random() * $scope.otherData.length);
+          $scope.RandomPerson = $scope.otherData[random];
+          $scope.Random = true;
+          console.log($scope.RandomPerson);
+        }
+        while($scope.RandomPerson.$id == owner.uid);
+
 
 
       };
