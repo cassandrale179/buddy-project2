@@ -33,7 +33,7 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
     $scope.chatData = $firebaseArray(chatRef);
     $scope.chatData.$loaded().then(function(x){
       angular.forEach($scope.chatData, function(message){
-        message.formatTime = moment(message.timestamp).calendar(); 
+        message.formatTime = moment(message.timestamp).calendar();
         $scope.conversation.push(message);
       });
     });
@@ -52,6 +52,7 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
       var buddiesRef = firebase.database().ref("prod/users/" + $scope.buddiesId + "/buddies/" + user.uid);
       userRef.update({lastText: newmessage.text});
       buddiesRef.update({lastText: newmessage.text});
+      $scope.$apply();
     };
 
     //---------------------- CHANGE COLOR OF THE TEXT ------------------
@@ -74,8 +75,6 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
         return cardStyle;
       }
     };
-
-    //---------------------- CHANGE TIME OF THE TEXT ------------------
 
 
   });

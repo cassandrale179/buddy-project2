@@ -1,4 +1,4 @@
-app.controller('ProfileCtrl',  ['$scope', '$state',
+app.controller('ProfileCtrl',
 function($scope, $state) {
 
   //--------- VARIABLES TO BE USED ---------
@@ -19,6 +19,7 @@ function($scope, $state) {
         $scope.interests = snapshot.val().interest.split(",").length - 1;
         $scope.friendrequests = snapshot.val().friendrequests;
         $scope.buddies = snapshot.val().buddies;
+        $scope.location = snapshot.val().location;
 
         if ($scope.buddies){
           $scope.numberOfFriends = Object.keys($scope.buddies).length;
@@ -44,4 +45,4 @@ function($scope, $state) {
 
   });
 
-}]);
+});
