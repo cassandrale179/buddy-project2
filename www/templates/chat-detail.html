@@ -8,6 +8,7 @@
         <div ng-repeat="message in conversation" class="card" ng-style="setCard(message)">
           <div class="item item-text-wrap" ng-style="setColor(message)">
             {{message.text}}
+            <p style="text-align: left">{{message.formatTime}}</p>
           </div>
         </div>
     </div>

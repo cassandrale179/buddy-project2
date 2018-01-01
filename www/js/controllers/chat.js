@@ -16,6 +16,9 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
 //---------------------- CONTROLLER FOR CHAT DETAILS PAGE -------------------------
 .controller('ChatDetailCtrl', function($scope, $stateParams, $firebaseArray, $firebaseAuth) {
     $firebaseAuth().$onAuthStateChanged(function(user){
+      var date = new Date();
+      date = moment(date);
+      console.log(date);
 
     //------------------ VARIABLES TO BE USED ----------------------
     $scope.conversation = [];
@@ -25,21 +28,22 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
     $scope.buddiesId = $stateParams.chatBuddy;
     console.log($scope.buddiesId);
 
-
     //------------------ GET THE CONVERSATION OF TWO USERS ------------------------
     var chatRef  = firebase.database().ref("prod/chats/" + $stateParams.chatId);
     $scope.chatData = $firebaseArray(chatRef);
     $scope.chatData.$loaded().then(function(x){
       angular.forEach($scope.chatData, function(message){
+        message.formatTime = moment(message.timestamp).calendar(); 
         $scope.conversation.push(message);
       });
     });
 
     //------------- WHEN USER INSERT A MESSAGE ---------------
     $scope.insert = function(newmessage){
+      var d = new Date();
       newmessage.sender = user.uid;
       newmessage.receiver = $scope.buddiesId;
-      newmessage.timestamp = Date.now();
+      newmessage.timestamp = d.toString();
       chatRef.push(newmessage);
 
 
@@ -50,7 +54,7 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
       buddiesRef.update({lastText: newmessage.text});
     };
 
-    //------------- CHANGE COLOR OF THE TEXT ------------
+    //---------------------- CHANGE COLOR OF THE TEXT ------------------
     $scope.setColor = function(newmessage){
       var style = {
         "color": "white",
@@ -61,7 +65,7 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
       }
     };
 
-
+    //---------------------- CHANGE SHAPE OF CARD ------------------
     $scope.setCard = function(newmessage){
       var cardStyle = {
         "float": "right"
@@ -70,6 +74,8 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
         return cardStyle;
       }
     };
+
+    //---------------------- CHANGE TIME OF THE TEXT ------------------
 
 
   });

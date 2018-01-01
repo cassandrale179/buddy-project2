@@ -198,6 +198,10 @@ img{
   overflow: auto;
 }
 
+#F p{
+  color: #ECF0F1; 
+}
+
 
 /*--------------- STYLING INPUT BOX FOR CHAT ------------- */
 #G{
