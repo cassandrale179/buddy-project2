@@ -46,7 +46,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     params: {
       chatId: "",
       chatPictureUrl: "",
-      chatName: ""
+      chatName: "",
+      chatBuddy: ""
     },
     templateUrl: 'templates/chat-detail.html',
     controller: 'ChatDetailCtrl'

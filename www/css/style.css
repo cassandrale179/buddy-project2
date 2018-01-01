@@ -65,7 +65,8 @@ img{
 }
 
 .card{
-  max-width: 200px !important;
+  width: 200px !important;
+  margin-bottom: -5px;
 }
 
 
@@ -186,5 +187,35 @@ img{
   display: block;
   margin: auto;
   border-radius: 100px;
+  margin-top: 40px;
+}
 
+#F{
+  position: absolute;
+  height: 85%;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: auto;
+}
+
+
+/*--------------- STYLING INPUT BOX FOR CHAT ------------- */
+#G{
+  bottom: 0px;
+  position: fixed;
+  width: 100%;
+}
+
+.custom-inset{
+  background: black;
+  border: none;
+  color: white;
+}
+#G input{
+  margin-right: 20px;
+  color: white !important;
+}
+
+#G input::placeholder{
+  color: white;
 }
