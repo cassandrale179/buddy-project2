@@ -47,8 +47,27 @@ app.controller('MatchCtrl', function($scope, $state, $firebaseAuth, $firebaseArr
           }
         });
         console.log($scope.MatchesArray);
+
+        //------ IF THERE ARE NO MATCHES ----------
+        if ($scope.MatchesArray.length === 0){
+          $scope.NoMatch = true;
+        }
+        else{
+          $scope.NoMatch = false;
+        }
       });
+
+
+      $scope.RandomMatch = function(){
+        var random = Math.floor(Math.random() * $scope.otherData.length);
+        $scope.RandomPerson = $scope.otherData[random];
+        $scope.Random = true;
+        console.log($scope.RandomPerson); 
+
+
+      };
     }
+
 
     else{
       $state.go('login');
