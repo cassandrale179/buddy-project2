@@ -1,4 +1,4 @@
-app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera, $ionicPopup) {
+app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera, $ionicPopup, $ionicLoading, $ionicPlatform) {
   var user = firebase.auth().currentUser;
   firebase.auth().onAuthStateChanged(function(user) {
     console.log(user);
@@ -96,17 +96,27 @@ app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera, $ionicPo
 
         //------------ TESTING CODE FOR NOTIFICATIONS ----------
 
-        $scope.SendNotifications = function(){
-          console.log("This button is clicked"); 
+        // $scope.SendNotifications = function(){
+        //   console.log("This button is clicked");
           $scope.$on('$ionicView.beforeEnter', function(){
+            console.log("What is in here is run");
              window.FirebasePlugin.grantPermission();
              window.FirebasePlugin.getToken(function(token){
+               console.log("Token");
                console.log(token);
              }, function(error){
                console.error(error);
-             })
-          })
-        }
+             });
+
+            //-------------------- GET TOKEN REFRESH -------------
+             window.FirebasePlugin.onTokenRefresh(function(token) {
+              // save this server-side and use it to push notifications to this device
+              console.log(token);
+          }, function(error) {
+              console.error(error);
+          });
+          });
+        // };
 
       }
       //---------- IF USER IS NOT LOGGED IN, REDIRECT TO LOGIN PAGE ----------
@@ -114,6 +124,7 @@ app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera, $ionicPo
         $state.go('login');
       }
   });
+
 
 
 
