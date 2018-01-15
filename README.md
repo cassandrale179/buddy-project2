@@ -52,4 +52,4 @@ chmod +x hooks/after_prepare/010_add_platform_class.js
 Installing Java on Mac using Homebrew, then set JAVA_HOME:
 ```
 export JAVA_HOME=/Library/Java/Home
-``` 
+```
