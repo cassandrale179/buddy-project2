@@ -92,9 +92,23 @@ app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera, $ionicPo
             $state.go('login');
           });
         };
+
+
+        //------------ TESTING CODE FOR NOTIFICATIONS ----------
+
+        $scope.SendNotifications = function(){
+          console.log("This button is clicked"); 
+          $scope.$on('$ionicView.beforeEnter', function(){
+             window.FirebasePlugin.grantPermission();
+             window.FirebasePlugin.getToken(function(token){
+               console.log(token);
+             }, function(error){
+               console.error(error);
+             })
+          })
+        }
+
       }
-
-
       //---------- IF USER IS NOT LOGGED IN, REDIRECT TO LOGIN PAGE ----------
       else{
         $state.go('login');
