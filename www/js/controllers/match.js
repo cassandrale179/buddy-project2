@@ -13,21 +13,34 @@ app.controller('MatchCtrl', function($scope, $state, $firebaseAuth, $firebaseArr
 
       //------------- GET OTHER PEOPLE INTEREST FROM FIREBASE ---------------
       console.log("Matches are loading");
-      var otherRef = firebase.database().ref("prod/users");
+
+      //--------- GET A LIST OF USER'S FRIEND ------------
       var buddiesRef = firebase.database().ref("prod/users/" + owner.uid + "/buddies");
       $scope.buddiesData = $firebaseArray(buddiesRef);
+      $scope.buddiesData.$loaded().then(function(x){
+        $scope.BuddiesID = [];
+        angular.forEach($scope.buddiesData, function(friend){
+            $scope.BuddiesID.push(friend.$id);
+        });
+         // console.log($scope.BuddiesID);
+      });
+
+
+
+      //------------ GET EVERYONE INFORMATION -----------
+     var otherRef = firebase.database().ref("prod/users");
       $scope.otherData = $firebaseArray(otherRef);
       $scope.otherData.$loaded().then(function(x){
         $scope.MatchesArray = [];
-        angular.forEach($scope.otherData, function(user){
 
-          //FILTER OUT OLD FRIENDS
+        //------ OWNER IS THE USER, FRIEND ARE THE USER'S FRIENDS -----
+        angular.forEach($scope.otherData, function(everyone){
 
 
 
-          //GET EACH OTHER USER INTERES
-          if (owner.uid != user.$id){
-            $scope.OtherInterest = user.interest.split(",");
+          //GET EACH OTHER USER INTEREST 
+          if (owner.uid != everyone.$id && $scope.BuddiesID.indexOf(everyone.$id) == -1){
+            $scope.OtherInterest = everyone.interest.split(",");
             $scope.OtherInterest.splice(-1);
 
 
@@ -43,9 +56,9 @@ app.controller('MatchCtrl', function($scope, $state, $firebaseAuth, $firebaseArr
             if ($scope.CommonInterest.length > 0){
               $scope.CommonInterestStr = $scope.CommonInterest.join(",");
               var match = {
-                uid: user.$id,
-                name: user.name,
-                pictureUrl: user.pictureUrl,
+                uid: everyone.$id,
+                name: everyone.name,
+                pictureUrl: everyone.pictureUrl,
                 common: $scope.CommonInterestStr
               };
               $scope.MatchesArray.push(match);
@@ -64,6 +77,7 @@ app.controller('MatchCtrl', function($scope, $state, $firebaseAuth, $firebaseArr
       });
 
 
+      //------------- RANDOM MATCH ----------------
       $scope.RandomMatch = function(){
         do{
           var random = Math.floor(Math.random() * $scope.otherData.length);
@@ -72,8 +86,6 @@ app.controller('MatchCtrl', function($scope, $state, $firebaseAuth, $firebaseArr
           console.log($scope.RandomPerson);
         }
         while($scope.RandomPerson.$id == owner.uid);
-
-
 
       };
     }
