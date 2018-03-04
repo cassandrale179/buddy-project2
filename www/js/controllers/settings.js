@@ -125,11 +125,4 @@ app.controller('SettingsCtrl', function($scope, $state, $cordovaCamera, $ionicPo
       }
   });
 
-
-
-
-
 });
-// $scope.settings = {
-//   enableFriends: true
-// };

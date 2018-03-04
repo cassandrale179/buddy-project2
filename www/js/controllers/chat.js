@@ -8,7 +8,6 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
       if (buddiesList){
         $scope.chats = Object.values(buddiesList);
       }
-
     });
   });
 })
@@ -52,7 +51,9 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
       var buddiesRef = firebase.database().ref("prod/users/" + $scope.buddiesId + "/buddies/" + user.uid);
       userRef.update({lastText: newmessage.text});
       buddiesRef.update({lastText: newmessage.text});
-      $scope.$apply();
+      $scope.conversation.push(newmessage);
+      console.log($scope.conversation);
+      console.log("message is inserted");
     };
 
     //---------------------- CHANGE COLOR OF THE TEXT ------------------
@@ -76,6 +77,13 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
       }
     };
 
+
+
+    // --------------- GO BACK TO THE MAIN CHATS PAGE ---------------
+    $scope.goBack = function(){
+        console.log("this shit is clicked");
+        // $state.go('tab.chats');
+    };
 
   });
 });

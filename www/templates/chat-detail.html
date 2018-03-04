@@ -1,4 +1,7 @@
 <ion-view view-title="{{chat.name}}">
+    <ion-nav-buttons side="left">
+           <a ui-sref="tab.chats" class="button button-icon icon ion-ios-arrow-back"></a>
+      </ion-nav-buttons>
   <ion-content>
     <div id="F">
       <img ng-src="{{chat.pictureUrl}}" style="width: 70px; height: 70px">
@@ -21,7 +24,9 @@
       <input type="text" placeholder="Type here" ng-model="newmessage.text">
        <!-- <p ng-model="newmessage.sender"></p>
        <p ng-model="newmessage.receiver"></p> -->
-       <i ng-click="insert(newmessage)" class="icon ion-ios-arrow-right"></i>
+       <div id="G2" ng-click="insert(newmessage)">
+            <i class="icon ion-ios-arrow-right"></i>
+       </div>
       </div>
   </div>
 </ion-view>
