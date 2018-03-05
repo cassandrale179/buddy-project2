@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'firebase', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
