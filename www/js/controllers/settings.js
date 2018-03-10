@@ -112,12 +112,14 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
              targetHeight: 100,
              popoverOptions: CameraPopoverOptions,
              saveToPhotoAlbum: false,
-               correctOrientation:true
+             correctOrientation:true
            };
        });
 
 
-       $cordovaCamera.getPicture(options).then(function(imageData) {
+       //---------------------- CAMERA FUNCTION -------------------
+       $cordovaCamera.getPicture(options).then(function(imageData)
+      {
               var imageObjectRef = firebase.storage().ref('profilePictures/' + user.uid + '/profilePicture.jpg');
              // var image = document.getElementById('myImage');
              // image.src = "data:image/jpeg;base64," + imageData;
@@ -133,14 +135,9 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
            //-------- IF THERE ARE ERROR, DISPLAYED IT HERE -------------
            }, function(err) {
              console.log(err);
-         });
-
-
+       });
 
 
 
     };
-
-
-
 });

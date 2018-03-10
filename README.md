@@ -8,7 +8,6 @@ To test app on either browser or phone, make sure the following components are i
 npm install -g cordova ionic
 bower install ionic-native --save
 ionic cordova plugin add cordova-plugin-camera
-
 ```
 Installing Cordova or Ionic requires [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed on your machine.
 
@@ -54,3 +53,6 @@ chmod +x hooks/after_prepare/010_add_platform_class.js
 * Documentation on Ionic Native: https://www.npmjs.com/package/ionic-native
 * Updated Cordova CLI: https://ionicframework.com/docs/cli/cordova/plugin/
 * How to Use Ionic Native in Ionic 1: https://www.techiediaries.com/mobiledev/getting-started-with-ionic-native-for-ionic-1-2/
+* Build Fail for Android 7.0.0: https://github.com/ionic-team/ionic/issues/13702
+* Push notificatio with Cordova Plugin:  https://www.youtube.com/watch?v=DvRGNrGpI_A
+* Docker Container: https://www.youtube.com/watch?v=pGYAg7TMmp0
