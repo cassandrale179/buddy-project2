@@ -6,6 +6,9 @@ A proper conversion of the Buddy Project using Ionic 1 framework.
 To test app on either browser or phone, make sure the following components are installed:
 ```
 npm install -g cordova ionic
+npm install ionic-native --save
+ionic cordova plugin add cordova-plugin-camera
+
 ```
 Installing Cordova or Ionic requires [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed on your machine.
 This app also utilizes ng-Cordova. Go here to download the zip file and unzip it:
@@ -47,9 +50,4 @@ That means the hook doesn't have execute permissions, so you get an EACCES error
 For Ionic 1, run the following command:
 ```
 chmod +x hooks/after_prepare/010_add_platform_class.js
-```
-
-Installing Java on Mac using Homebrew, then set JAVA_HOME:
-```
-export JAVA_HOME=/Library/Java/Home
 ```
