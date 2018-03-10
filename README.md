@@ -6,17 +6,14 @@ A proper conversion of the Buddy Project using Ionic 1 framework.
 To test app on either browser or phone, make sure the following components are installed:
 ```
 npm install -g cordova ionic
-npm install ionic-native --save
+bower install ionic-native --save
 ionic cordova plugin add cordova-plugin-camera
 
 ```
 Installing Cordova or Ionic requires [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed on your machine.
-This app also utilizes ng-Cordova. Go here to download the zip file and unzip it:
-http://ngcordova.com/docs/install/
-To link the ng-cordova file to the app, copy and paste the following in the index.html file:
-```
-<script src="ng-cordova-master/dist/ng-cordova.js"></script>
-```
+
+
+
 
 To test this app on the browser, run the following commands:
 ```
@@ -51,3 +48,9 @@ For Ionic 1, run the following command:
 ```
 chmod +x hooks/after_prepare/010_add_platform_class.js
 ```
+
+
+## Useful resources
+* Documentation on Ionic Native: https://www.npmjs.com/package/ionic-native
+* Updated Cordova CLI: https://ionicframework.com/docs/cli/cordova/plugin/
+* How to Use Ionic Native in Ionic 1: https://www.techiediaries.com/mobiledev/getting-started-with-ionic-native-for-ionic-1-2/

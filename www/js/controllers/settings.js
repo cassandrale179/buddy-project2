@@ -98,7 +98,48 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
 
 
     //----------- FUNCTION TO UPLOAD PICTURE (DEPRECATED) ------------
-    
+    $scope.UploadPicture = function(){
+
+        //----------- OPTIONS FOR THE CAMERA -------- -
+        document.addEventListener("deviceready", function () {
+           var options = {
+             quality: 100,
+             destinationType: Camera.DestinationType.DATA_URL,
+             sourceType: Camera.PictureSourceType.CAMERA,
+             allowEdit: true,
+             encodingType: Camera.EncodingType.JPEG,
+             targetWidth: 100,
+             targetHeight: 100,
+             popoverOptions: CameraPopoverOptions,
+             saveToPhotoAlbum: false,
+               correctOrientation:true
+           };
+       });
+
+
+       $cordovaCamera.getPicture(options).then(function(imageData) {
+              var imageObjectRef = firebase.storage().ref('profilePictures/' + user.uid + '/profilePicture.jpg');
+             // var image = document.getElementById('myImage');
+             // image.src = "data:image/jpeg;base64," + imageData;
+             imageObjectRef.putString(imageData, 'base64', {contentType:'image/jpg'});
+             console.log("Successfully captured image");
+
+
+             //-------- UPDATE USER PROFILE PICTURE -------------
+             imageObjectRef.getDownloadURL().then(function(url){
+               UserRef.update({pictureUrl: url});
+             });
+
+           //-------- IF THERE ARE ERROR, DISPLAYED IT HERE -------------
+           }, function(err) {
+             console.log(err);
+         });
+
+
+
+
+
+    };
 
 
 
