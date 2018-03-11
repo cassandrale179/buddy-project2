@@ -54,7 +54,8 @@ chmod +x hooks/after_prepare/010_add_platform_class.js
 build failed with android 7.0.0 Error: ENOENT: no such file platforms\android\res\values\strings.xml
 ```
 
-Then for Cordova 7 installations, MY_APP\plugins\cordova-plugin-firebase\scripts\after_prepare.js should be set to ```
+Then for Cordova 7 installations, MY_APP\plugins\cordova-plugin-firebase\scripts\after_prepare.js should be set to
+```
 stringsXml: ANDROID_DIR + '/app/src/main/res/values/strings.xml' on line 51
 ```
 
@@ -84,5 +85,6 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 * Updated Cordova CLI: https://ionicframework.com/docs/cli/cordova/plugin/
 * How to Use Ionic Native in Ionic 1: https://www.techiediaries.com/mobiledev/getting-started-with-ionic-native-for-ionic-1-2/
 * Build Fail for Android 7.0.0: https://github.com/ionic-team/ionic/issues/13702
+* Manage Java Version : https://stackoverflow.com/questions/21964709/how-to-set-or-change-the-default-java-jdk-version-on-os-x
 * Push notification with Cordova Plugin:  https://www.youtube.com/watch?v=DvRGNrGpI_A
 * Docker Container: https://www.youtube.com/watch?v=pGYAg7TMmp0
