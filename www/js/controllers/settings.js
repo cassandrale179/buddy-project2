@@ -14,31 +14,6 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
       });
 
 
-      //------- NOTIFICATIONS STUFF --------
-        var messaging = firebase.messaging();
-        messaging.requestPermission().then(function()
-    {
-            console.log('Notification permission granted.');
-            messaging.getToken().then(function(currentToken){
-                if (currentToken){
-                    console.log(currentToken);
-                }
-                else{
-                     console.log('No Instance ID token available. Request permission to generate one.');
-                     updateUIForPushPermissionRequired();
-                     setTokenSentToServer(false);
-                }
-            }).
-            catch(function(err){
-                console.log(err);
-            });
-        }).catch(function(err) {
-            console.log('Unable to get permission to notify.', err);
-    });
-
-
-
-
         //---------------------- FUNCTION TO EDIT BIO ----------------------
         $scope.EditBio = function()
         {
@@ -75,6 +50,49 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
             });
         };
 
+        $scope.UploadPicture = function()
+    {
+
+            //----------- OPTIONS FOR THE CAMERA -------- -
+            document.addEventListener("deviceready", function () {
+               var options = {
+                 quality: 100,
+                 destinationType: Camera.DestinationType.DATA_URL,
+                 // destinationType: Camera.DestinationType.FILE_URI,
+                 sourceType: Camera.PictureSourceType.CAMERA,
+                 // sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                 allowEdit: true,
+                 encodingType: Camera.EncodingType.JPEG,
+                 targetWidth: 100,
+                 targetHeight: 100,
+                 popoverOptions: CameraPopoverOptions,
+                 saveToPhotoAlbum: false,
+                 correctOrientation:true
+               };
+
+           $cordovaCamera.getPicture(options).then(function(imageData)
+          {
+                  var imageObjectRef = firebase.storage().ref('profilePictures/' + user.uid + '/profilePicture.jpg');
+                 // var image = document.getElementById('myImage');
+                 // image.src = "data:image/jpeg;base64," + imageData;
+                 imageObjectRef.putString(imageData, 'base64', {contentType:'image/jpg'});
+                 console.log("Successfully captured image");
+
+
+                 //-------- UPDATE USER PROFILE PICTURE -------------
+                 imageObjectRef.getDownloadURL().then(function(url){
+                   UserRef.update({pictureUrl: url});
+               }, function(error){
+                   console.log(error);
+               });
+
+               //-------- IF THERE ARE ERROR, DISPLAYED IT HERE -------------
+            }, function(err) {
+                 console.log(err);
+           });
+        });
+    };
+
         //--------- FUNCTION TO LOG OUT USER -------------
         $scope.LogOut = function()
         {
@@ -86,7 +104,9 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
         };
 
 
-      }
+
+
+    }
 
 
 
@@ -98,46 +118,5 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
 
 
     //----------- FUNCTION TO UPLOAD PICTURE (DEPRECATED) ------------
-    $scope.UploadPicture = function(){
 
-        //----------- OPTIONS FOR THE CAMERA -------- -
-        document.addEventListener("deviceready", function () {
-           var options = {
-             quality: 100,
-             destinationType: Camera.DestinationType.DATA_URL,
-             sourceType: Camera.PictureSourceType.CAMERA,
-             allowEdit: true,
-             encodingType: Camera.EncodingType.JPEG,
-             targetWidth: 100,
-             targetHeight: 100,
-             popoverOptions: CameraPopoverOptions,
-             saveToPhotoAlbum: false,
-             correctOrientation:true
-           };
-       });
-
-
-       //---------------------- CAMERA FUNCTION -------------------
-       $cordovaCamera.getPicture(options).then(function(imageData)
-      {
-              var imageObjectRef = firebase.storage().ref('profilePictures/' + user.uid + '/profilePicture.jpg');
-             // var image = document.getElementById('myImage');
-             // image.src = "data:image/jpeg;base64," + imageData;
-             imageObjectRef.putString(imageData, 'base64', {contentType:'image/jpg'});
-             console.log("Successfully captured image");
-
-
-             //-------- UPDATE USER PROFILE PICTURE -------------
-             imageObjectRef.getDownloadURL().then(function(url){
-               UserRef.update({pictureUrl: url});
-             });
-
-           //-------- IF THERE ARE ERROR, DISPLAYED IT HERE -------------
-           }, function(err) {
-             console.log(err);
-       });
-
-
-
-    };
 });

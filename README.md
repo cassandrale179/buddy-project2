@@ -12,14 +12,13 @@ ionic cordova plugin add cordova-plugin-camera
 Installing Cordova or Ionic requires [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed on your machine.
 
 
-
-
 To test this app on the browser, run the following commands:
 ```
 git clone "https://github.com/cassandrale179/buddy-project2.git"
 cd buddy-project2
 $ionic serve
 ```
+
 
 ## Testing the app on Android
 
@@ -28,13 +27,10 @@ To test this app on Android, run the following command:
 $ ionic cordova build android
 $ ionic cordova run android
 ```
+For Chrome remote debugging:
+chrome://inspect/RNV0217209001091#devices
 
 
-## Testing the app on Iphone
-```
-$ ionic cordova build ios
-```
-Once you have an account and you have set up Xcode with your certificates to enable device testing, you’ll want to open the Xcode project from platforms/ios/ and do your testing from Xcode
 
 ## Possible errors  
 
@@ -49,10 +45,7 @@ For Ionic 1, run the following command:
 chmod +x hooks/after_prepare/010_add_platform_class.js
 ```
 
-* If encountered with this error:
-```
-build failed with android 7.0.0 Error: ENOENT: no such file platforms\android\res\values\strings.xml
-```
+* If encountered with this error: build failed with android 7.0.0 Error: ENOENT: no such file platforms\android\res\values\strings.xml
 
 Then for Cordova 7 installations, MY_APP\plugins\cordova-plugin-firebase\scripts\after_prepare.js should be set to
 ```
@@ -64,7 +57,7 @@ stringsXml: ANDROID_DIR + '/app/src/main/res/values/strings.xml' on line 51
 ```
 (node:18377) UnhandledPromiseRejectionWarning: CordovaError: Requirements check failed for JDK 1.8 or greater
 ```
-- First run /usr/libexec/java_home -V which will output something like the following:
+First run /usr/libexec/java_home -V which will output something like the following:
 ```
 Matching Java Virtual Machines (3):
 1.8.0_05, x86_64:   "Java SE 8" /Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
