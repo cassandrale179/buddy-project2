@@ -101,20 +101,6 @@ angular.module('starter', ['ionic', 'ionic.native', 'starter.controllers', 'star
         }
       }
     })
-    // .state('tab.chat-detail', {
-    //   url: '/chats',
-    //   params: {
-    //     chatId: "",
-    //     chatPictureUrl: "",
-    //     chatName: ""
-    //   },
-    //   views: {
-    //     'tab-chats': {
-    //       templateUrl: 'templates/chat-detail.html',
-    //       controller: 'ChatDetailCtrl'
-    //     }
-    //   }
-    // })
 
   .state('tab.settings', {
     url: '/settings',
@@ -132,7 +118,6 @@ angular.module('starter', ['ionic', 'ionic.native', 'starter.controllers', 'star
 })
 
 .config(['$ionicConfigProvider', function($ionicConfigProvider) {
-
     $ionicConfigProvider.tabs.position('bottom'); // other values: top
 
 }]);

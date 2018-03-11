@@ -104,6 +104,25 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
         };
 
 
+        var messaging = firebase.messaging();
+        messaging.requestPermission()
+        .then(function() {
+          console.log('Notification permission granted.');
+            // messaging.onTokenRefresh(function(){
+                messaging.getToken().then(function(refreshToken){
+                    console.log('Token refreshed.');
+                    console.log(refreshToken);
+                }).catch(function(err){
+                     console.log('Unable to retrieve refreshed token ', err);
+                });
+            // });
+
+        })
+        .catch(function(err) {
+              console.log('Unable to get permission to notify.', err);
+        });
+
+
 
 
     }
