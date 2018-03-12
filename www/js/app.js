@@ -13,6 +13,8 @@ angular.module('starter', ['ionic', 'ionic.native', 'starter.controllers', 'star
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+
   });
 })
 
