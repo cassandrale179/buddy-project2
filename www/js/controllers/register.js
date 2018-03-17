@@ -1,4 +1,6 @@
-app.controller('RegisterCtrl',  function($scope, $state, $ionicPopup) {
+app.controller('RegisterCtrl',  function($scope, $state, $ionicPopup, $firebaseAuth) {
+     $scope.errorMessage = "";
+     var auth = $firebaseAuth();
 
    //--------------- FUNCTION TO GET LOCATION ------------------
     function getLocation() {
@@ -29,10 +31,9 @@ app.controller('RegisterCtrl',  function($scope, $state, $ionicPopup) {
         });
     }
   getLocation();
-  $scope.errormessage = "";
   $scope.RegisterUser = function(user){
     $scope.user = user;
-    firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+    auth.$createUserWithEmailAndPassword(user.email, user.password)
         .then(function(resolve){
           var info = {
           name: $scope.user.name,
@@ -52,20 +53,7 @@ app.controller('RegisterCtrl',  function($scope, $state, $ionicPopup) {
     //----------------------- CATCHING ERRORS --------------------------
     .catch(function(error)
       {
-        if (error.code == 'auth/weak-password') {
-          $scope.errorMessage = "Password is weak.";
-        }
-        if (error.code == "auth/email-already-in-use"){
-          $scope.errorMessage = "Email is already used by another account";
-        }
-        if (error.code == 'auth/invalid-email'){
-          $scope.errorMessage = "Invalid email";
-        }
-        console.log(error);
-        $state.go('register');
+        $scope.errorMessage = error.message;
       });
-
-
   };
-
 });
