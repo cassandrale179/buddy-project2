@@ -13,9 +13,6 @@ function($scope, $state) {
 
     if (user){
 
-    //-------- CHECK IF THEY UPLOAD A PROFILE PICTURE ------
-    // var storage = firebase.storage();
-    // var pathReference = storage.ref('profilePictures/' + 'profilePicture.jpg');
 
 
     //-------- GET USER INFORMATION ------
@@ -29,7 +26,7 @@ function($scope, $state) {
         $scope.interests = snapshot.val().interest.split(",").length - 1;
         $scope.friendrequests = snapshot.val().friendrequests;
         $scope.buddies = snapshot.val().buddies;
-        $scope.location = snapshot.val().location;
+        // $scope.location = snapshot.val().location;
 
         if ($scope.buddies){
           $scope.numberOfFriends = Object.keys($scope.buddies).length;
@@ -45,6 +42,15 @@ function($scope, $state) {
         else{
           $scope.errorMessage = "";
         }
+
+
+        //------- REFRESH FUNCTIONS -----
+        $scope.refresh = function(){
+            window.location.reload();
+            $state.go('tab.buddies');
+        };
+
+
         $scope.$apply();
        });
     }

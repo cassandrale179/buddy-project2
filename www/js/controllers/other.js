@@ -47,9 +47,9 @@ app.controller('OtherCtrl', function($scope, $state, $stateParams, $firebaseAuth
               $scope.show = 4; //accept this person request?
             }
           }
-          $scope.$apply();
+          // $scope.$apply();
         });
-        $scope.$apply();
+        // $scope.$apply();
       });
 
 

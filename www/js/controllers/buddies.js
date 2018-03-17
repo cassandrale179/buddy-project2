@@ -11,10 +11,14 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
     $scope.buddiesPeople = $firebaseArray(buddiesRef);
 
 
+    //-------- CREATE A LIST OF PROMISE ------
+    var pendingPromise = $scope.pendingPeople.$loaded();
+    var buddiesPromise =  $scope.buddiesPeople.$loaded();
 
-    //------------- LOAD IF USER HAS ANY FRIEND REQUESTS ---------------
-      $scope.pendingPeople.$loaded().then(function(x)
-    {
+    Promise.all([pendingPromise, buddiesPromise]).then(results => {
+
+
+        //-------- IF THERE ARE PEOPLE PENDING ----------
         if ($scope.pendingPeople.length > 0){
           angular.forEach($scope.pendingPeople, function(req){
             var reqRef = firebase.database().ref("prod/users/" + req.$id);
@@ -26,18 +30,13 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
               $scope.PendingArr.push($scope.req);
             });
           });
-          $state.go("tab.buddies");
+          // $state.go("tab.buddies");
         }
         else{
           $scope.NoPending = true;
         }
-    });
 
-
-
-
-    //-------------- LOAD IF USER HAS ANY FRIENDS --------------
-      $scope.buddiesPeople.$loaded().then(function(x){
+        //------- IF THERE ARE BUDDY, ADD THEM TO BUDDIES ARR -------
         if ($scope.buddiesPeople.length > 0){
           angular.forEach($scope.buddiesPeople, function(buddy){
             $scope.BuddiesArr.push(buddy);
@@ -47,7 +46,11 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
           console.log("You have no buddies at the moment");
           $scope.NoBuddies = true;
         }
-      });
+
+
+
+
+    });
 
 
 
@@ -67,6 +70,28 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
           //------------ REMOVE PENDING FRIEND REQUEST -------------------
           pendingRef.child(buddiesId).remove().then(function(){
             console.log("Request pending removed");
+
+            //----------- ADD USER B TO USER A (CURRENT USER)'S FRIEND LIST --------
+              var otherBuddiesRef = firebase.database().ref("prod/users/" + buddiesId + "/buddies");
+              var userRef = firebase.database().ref("prod/users/" + user.uid);
+              userRef.on("value", function(userinfo){
+                otherBuddiesRef.child(user.uid).update({
+                  id: user.uid,
+                  name: userinfo.val().name,
+                  pictureUrl: userinfo.val().pictureUrl,
+                  convo: convoID,
+                  lastText: "You are now each other's buddies :) "
+                });
+              });
+
+              //----------- ADD USER B TO USER A (CURRENT USER)'S FRIEND LIST --------
+              buddiesRef.child(buddiesId).update({
+                id: buddiesId,
+                name: buddiesName,
+                pictureUrl: buddiesPic,
+                convo: convoID
+              });
+
           })
           .catch(function(){
             console.log("Unable to remove");
@@ -77,38 +102,18 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
           var chatRef = firebase.database().ref("prod/chats");
           var convoID = chatRef.push();
           convoID = convoID.key;
-
           var messageObject = {
             sender: user.uid,
             receiver: buddiesId,
             timestamp: Date.now(),
             text: "You are now each other's buddies :) "
           };
-
           chatRef.child(convoID).push(messageObject);
           console.log(convoID);
 
-
-          //----------- ADD USER B TO USER A (CURRENT USER)'S FRIEND LIST --------
-          buddiesRef.child(buddiesId).update({
-            id: buddiesId,
-            name: buddiesName,
-            pictureUrl: buddiesPic,
-            convo: convoID
-          });
-
-          //----------- ADD USER B TO USER A (CURRENT USER)'S FRIEND LIST --------
-            var otherBuddiesRef = firebase.database().ref("prod/users/" + buddiesId + "/buddies");
-            var userRef = firebase.database().ref("prod/users/" + user.uid);
-            userRef.on("value", function(userinfo){
-              otherBuddiesRef.child(user.uid).update({
-                id: user.uid,
-                name: userinfo.val().name,
-                pictureUrl: userinfo.val().pictureUrl,
-                convo: convoID,
-                lastText: "You are now each other's buddies :) "
-              });
-            });
+        //-------- GO TO CHATS AND REFRESH -------
+        $state.go('tab.chats');
+        window.location.reload();
 
 
         }
@@ -118,7 +123,5 @@ app.controller('BuddiesCtrl', function($scope, $state, $firebaseAuth, $firebaseA
         }
      });
     };
-
-
   });
 });

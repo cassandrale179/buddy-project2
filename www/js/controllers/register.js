@@ -41,7 +41,7 @@ app.controller('RegisterCtrl',  function($scope, $state, $ionicPopup, $firebaseA
           description: "This is a part where you can write a few short descriptive sentences about your bio",
           interest: "",
           birthyear: $scope.user.birthyear,
-          location: $scope.location,
+          // location: $scope.location,
           pictureUrl: "https://firebasestorage.googleapis.com/v0/b/buddy-project-d9fe9.appspot.com/o/default-avatar.png?alt=media&token=dd0f36d1-5424-43a0-8d51-d2e22f2e5aa2"
         };
         var userRef = firebase.database().ref("prod/users/");

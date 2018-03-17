@@ -27,7 +27,7 @@
 
       <!-- ____________________ IF THE USER HAS NO MATCHES __________________ -->
       <div id = "E1" ng-show="NoMatch"><h4>You have no matches at the moment.</h4>
-        <button class="button button-block">UPDATE INTEREST</button>
+        <button ui-sref="interest" class="button button-block">UPDATE INTEREST</button>
         <button class="button button-block button-dark" ng-click="RandomMatch()">RANDOM MATCH :) </button>
         <div id="E2" ng-show="Random">
           <h4>We found you someone!</h4>
