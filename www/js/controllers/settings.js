@@ -153,6 +153,5 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
     });
 
 
-    //----------- FUNCTION TO UPLOAD PICTURE (DEPRECATED) ------------
 
 });

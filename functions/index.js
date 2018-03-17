@@ -35,7 +35,7 @@ exports.sendMessageNotificaton = functions.database
             admin.messaging().sendToDevice(token, payload)
                 .then(response => {
                     console.log("Successfully sent notification", response);
-                    return response; 
+                    return response;
                 }).catch(error => {
                     console.log(error);
                 });
@@ -50,3 +50,7 @@ exports.sendMessageNotificaton = functions.database
         console.log(error);
     });
 });
+
+
+
+//----------------- SEND NOTIFICATIONS WHEN SOMEONE SEND A FRIEND REQUEST --------
