@@ -1,14 +1,24 @@
 app.controller('ProfileCtrl',
 function($scope, $state) {
 
+
+
   //--------- VARIABLES TO BE USED ---------
   var user = firebase.auth().currentUser;
   $scope.numberOfFriends = 0;
   var dateObj = (new Date()).getFullYear();
 
-  //---------- GET USER INFORMATION ----------------
+  //---------- FUNCTIONS TO GET USER INFORMATION ----------------
   firebase.auth().onAuthStateChanged(function(user) {
+
     if (user){
+
+    //-------- CHECK IF THEY UPLOAD A PROFILE PICTURE ------
+    // var storage = firebase.storage();
+    // var pathReference = storage.ref('profilePictures/' + 'profilePicture.jpg');
+
+
+    //-------- GET USER INFORMATION ------
       var userRef = firebase.database().ref("prod/users/" + user.uid);
       userRef.on("value", function(snapshot){
         $scope.name = snapshot.val().name;
@@ -26,7 +36,6 @@ function($scope, $state) {
         }
 
 
-
         //---------- CHECK IF THERE ARE ANY PENDING REQUEST -------------
         if ($scope.friendrequests){
           if (Object.keys($scope.friendrequests).length > 0){
@@ -39,6 +48,8 @@ function($scope, $state) {
         $scope.$apply();
        });
     }
+
+    //--------- IF USER IS NOT LOGGED IN  ------
     else{
        $state.go('login');
     }

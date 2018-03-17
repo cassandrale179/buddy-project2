@@ -1,9 +1,8 @@
 <ion-view hide-nav-bar="true">
   <ion-content class="padding center1">
-    <!-- <img class="logo" src="../img/logo.png" /> -->
       <img class="logo" src="https://firebasestorage.googleapis.com/v0/b/buddy-project-d9fe9.appspot.com/o/logo.png?alt=media&token=62d24be8-0887-4710-8ea4-8e401a71c057" />
-    <h1> BUDDY PROJECT </h1>
-      <div ng-if="errorMessage!=''">{{errorMessage}}</div>
+      <h1> BUDDY PROJECT </h1>
+      <div class="error" ng-if="errorMessage!=''">{{errorMessage}}</div>
       <div>
           <input ng-model="user.name" type="text" placeholder="Name" >
           <input placeholder="Birthday" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" ng-model="user.birthyear">
