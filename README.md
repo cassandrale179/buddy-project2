@@ -79,5 +79,5 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 * How to Use Ionic Native in Ionic 1: https://www.techiediaries.com/mobiledev/getting-started-with-ionic-native-for-ionic-1-2/
 * Build Fail for Android 7.0.0: https://github.com/ionic-team/ionic/issues/13702
 * Manage Java Version : https://stackoverflow.com/questions/21964709/how-to-set-or-change-the-default-java-jdk-version-on-os-x
-* Push notification with Cordova Plugin:  https://www.youtube.com/watch?v=DvRGNrGpI_A
-* Docker Container: https://www.youtube.com/watch?v=pGYAg7TMmp0
+* Realtime Database Trigger with Cloud Functions: https://www.youtube.com/watch?v=7E13ZBCyKT0
+* ES6 Anti-Promises Pattern: http://www.datchley.name/promise-patterns-anti-patterns/  
