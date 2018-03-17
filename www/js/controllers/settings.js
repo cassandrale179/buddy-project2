@@ -39,6 +39,7 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
         };
 
 
+        //------------------ FUNCTION TO EDIT PASSWORD -----------
         $scope.EditPassword = function()
         {
            firebase.auth().sendPasswordResetEmail(user.email).then(function() {
@@ -50,8 +51,11 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
             });
         };
 
+
+
+        //------------- FUNCTION TO UPLOAD PICTURE --------
         $scope.UploadPicture = function()
-    {
+        {
 
             //----------- OPTIONS FOR THE CAMERA -------- -
             document.addEventListener("deviceready", function () {
@@ -81,6 +85,10 @@ app.controller('SettingsCtrl', function($scope, $state, $ionicPopup, $ionicLoadi
 
                  //-------- UPDATE USER PROFILE PICTURE -------------
                  imageObjectRef.getDownloadURL().then(function(url){
+                   console.log("Successfully updated the user picture");
+                   $ionicPopup.alert({
+                     title: "Profile picture changed"
+                   });
                    UserRef.update({pictureUrl: url});
                }, function(error){
                    console.log(error);
