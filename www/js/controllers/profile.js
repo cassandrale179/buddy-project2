@@ -49,8 +49,6 @@ function($scope, $state) {
             window.location.reload();
             $state.go('tab.buddies');
         };
-
-
         $scope.$apply();
        });
     }
@@ -59,7 +57,5 @@ function($scope, $state) {
     else{
        $state.go('login');
     }
-
   });
-
 });
