@@ -54,3 +54,48 @@ exports.sendMessageNotificaton = functions.database
 
 
 //----------------- SEND NOTIFICATIONS WHEN SOMEONE SEND A FRIEND REQUEST --------
+exports.sendFriendRequestNotification = functions.database
+    .ref('/prod/users/{userID}/friendrequests').onWrite(event =>{
+        let newrequest = event.data.val();
+        let keys = Object.keys(newrequest);
+        let lastkey = keys[keys.length-1];
+        console.log("new request", newrequest);
+
+
+        let receiverID = event.params.userID;
+        console.log("receiver id", receiverID);
+
+        let receiverPromise = admin.database().ref('prod/users/' + receiverID).once("value");
+        Promise.all([receiverPromise]).then(snap => {
+            var userInfo = snap[0].val();
+            console.log("data", userInfo);
+            if (userInfo.messageToken){
+                var token = userInfo.messageToken;
+                let payload = {
+                    notification: {
+                        title: "You have a friend request!",
+                        body: "Check Buddy Project to find out more",
+                        sound: "default"
+                    }
+                };
+
+
+                //----------- SEND NOTIFICATIONS ------------
+                admin.messaging().sendToDevice(token, payload)
+                    .then(response => {
+                        console.log("Successfully sent notification", response);
+                        return response;
+                    }).catch(error => {
+                        console.log(error);
+                    });
+            }
+            else{
+                console.log("User does not have a message token");
+            }
+            return UserInfo;
+
+        }).catch(error => {
+            console.log(error);
+        });
+
+});
