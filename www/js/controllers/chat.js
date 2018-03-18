@@ -54,35 +54,53 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
       $scope.conversation.push(newmessage);
       console.log($scope.conversation);
       console.log("message is inserted");
+      $scope.newmessage = {};
     };
 
     //---------------------- CHANGE COLOR OF THE TEXT ------------------
     $scope.setColor = function(newmessage){
       var style = {
         "color": "white",
-        "background": "#2E86C1"
+        "background": "#2E86C1",
+        "font-size": "12px",
+        "padding": "10px",
       };
+
+      var style2 = {
+         "color": "black",
+         "background": "white",
+         "font-size": "12px",
+         "padding": "10px",
+     };
+
+      //--------- RETURN style ---------
       if (newmessage.sender == user.uid){
         return style;
+      }
+     else{
+          return style2;
       }
     };
 
     //---------------------- CHANGE SHAPE OF CARD ------------------
     $scope.setCard = function(newmessage){
       var cardStyle = {
-        "float": "right"
+        "margin-top": "0px",
+        "float": "right",
+        "margin-bottom": "10px"
       };
       if (newmessage.sender == user.uid){
         return cardStyle;
       }
+      else{
+          return {"margin-bottom": "10px"};
+      }
     };
-
 
 
     // --------------- GO BACK TO THE MAIN CHATS PAGE ---------------
     $scope.goBack = function(){
         console.log("this shit is clicked");
-        // $state.go('tab.chats');
     };
 
   });

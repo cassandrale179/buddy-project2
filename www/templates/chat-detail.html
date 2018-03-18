@@ -8,7 +8,7 @@
       <h4>{{chat.name}}</h4>
 
       <!-- __________ LOAD THE CONVERSATION BETWEEN TWO USERS ___________ -->
-        <div ng-repeat="message in conversation" class="card" ng-style="setCard(message)">
+        <div id="F1" ng-repeat="message in conversation" class="card" ng-style="setCard(message)">
           <div class="item item-text-wrap" ng-style="setColor(message)">
             {{message.text}}
             <p style="text-align: left">{{message.formatTime}}</p>
@@ -22,8 +22,6 @@
   <div id="G">
       <div class="item item-input-inset custom-inset">
       <input type="text" placeholder="Type here" ng-model="newmessage.text">
-       <!-- <p ng-model="newmessage.sender"></p>
-       <p ng-model="newmessage.receiver"></p> -->
        <div id="G2" ng-click="insert(newmessage)">
             <i class="icon ion-ios-arrow-right"></i>
        </div>
