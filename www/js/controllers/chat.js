@@ -55,7 +55,6 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
       console.log($scope.conversation);
       console.log("message is inserted");
       $scope.newmessage = {};
-      // window.location.reload();
     };
 
     //---------------------- CHANGE COLOR OF THE TEXT ------------------
@@ -86,10 +85,15 @@ app.controller('ChatsCtrl', function($scope, $firebaseAuth) {
     //---------------------- CHANGE SHAPE OF CARD ------------------
     $scope.setCard = function(newmessage){
       var cardStyle = {
+        "margin-top": "0px",
         "float": "right",
+        "margin-bottom": "10px"
       };
       if (newmessage.sender == user.uid){
         return cardStyle;
+      }
+      else{
+          return {"margin-bottom": "10px"};
       }
     };
 
