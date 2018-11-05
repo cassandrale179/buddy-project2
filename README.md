@@ -1,6 +1,6 @@
 # The Buddy Project v2.0
 
-A proper conversion of the Buddy Project using Ionic 1 framework.
+A proper conversion of the Buddy Project using Ionic 1 framework. Avaiable at [Play Store.](https://play.google.com/store/apps/details?id=buddy.project.com) 
 
 ## Testing the app on browser
 To test app on either browser or phone, make sure the following components are installed:
