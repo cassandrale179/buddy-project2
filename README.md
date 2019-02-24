@@ -1,5 +1,7 @@
 # The Buddy Project v2.0
 
+![listing](https://user-images.githubusercontent.com/22923895/53293834-b9ef9e00-37a9-11e9-8742-f17b2401bbcf.png) 
+
 A proper conversion of the Buddy Project using Ionic 1 framework. Avaiable at [Play Store.](https://play.google.com/store/apps/details?id=buddy.project.com) 
 
 ## Testing the app on browser
@@ -71,6 +73,7 @@ Specify the version to be 1.8:
 ```
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 ```
+
 
 
 ## Resources
